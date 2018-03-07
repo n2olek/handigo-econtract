@@ -54,16 +54,18 @@ export const StepSelectLanguageStyle = styled.div`
     }
   }
 
-  @media screen and (max-width: ${SCREENS.TABLETXSMAX}) {
-    hr {
-      margin-top: 80px;
-    }
-
+  @media screen and (max-width: ${SCREENS.TABLETSSMMAX}) {
     .buttons-frontend {
       display: table;
       margin: auto;
       width: 100%;
       text-align: center;
+    }
+  }
+
+  @media screen and (max-width: ${SCREENS.TABLETXSMAX}) {
+    hr {
+      margin-top: 80px;
     }
   }
 
