@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {
-    SCREENS
+  SCREENS
 } from 'themes/styles/bases/variables'
 
 // Modifier (props)
@@ -11,8 +11,8 @@ import {
 export const SignContractStyle = styled.div`
 	/* Parent styles
     ------------------------------- */
-    padding-top: 85px;
-    padding-bottom: 30px;
+  padding-top: 85px;
+  padding-bottom: 30px;
 
 	/* Child element styles
     ------------------------------- */
@@ -29,12 +29,10 @@ export const SignContractStyle = styled.div`
 	/* Media queries
     ------------------------------- */
 
-    @media screen and (min-width: ${SCREENS.DESKTOPLG}) {
-        .container {
-            max-width: 1599px;
-        }
+  @media screen and (min-width: ${SCREENS.DESKTOPLG}) {
+    .container {
+      max-width: 1540px;
     }
+  }
 
 `;
-
-export default SignContractStyle;
