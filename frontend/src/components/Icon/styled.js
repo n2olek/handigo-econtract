@@ -29,8 +29,23 @@ export const IconsHandico = styled.i`
         margin-right: 0;
       }
     }
-  }
 
+    &-thai {
+      &:before {
+        content: url(${Icons['lang-thai.svg']});
+        width: 25px;
+        margin-right: 20px;
+      }
+    }
+
+    &-eng {
+      &:before {
+        content: url(${Icons['lang-eng.svg']});
+        width: 25px;
+        margin-right: 20px;
+      }
+    }
+  }
 
 	/* Child element styles
     ------------------------------- */

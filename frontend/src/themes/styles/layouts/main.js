@@ -41,9 +41,13 @@ injectGlobal`
     font-family: 'GothamRounded Bold';
     color: ${COLORS.GRAY7};
     background-color: ${COLORS.GRAY};
+  }
 
-    .segment {
-      /* margin-bottom: 60px; */
+  .header-title {
+    h4 {
+      font-size: ${FONTSIZES.PRIMARYBODYXXL};
+      color: ${COLORS.GRAY10};
+      margin-bottom: 40px;
     }
   }
 
@@ -93,171 +97,216 @@ injectGlobal`
   }
 
 .btn {
-    &.disabled,
-    &:disabled {
-      background-color: ${COLORS.GRAY8};
-      border-color: ${COLORS.GRAY8};
-      color: ${COLORS.WHITE1};
-    }
+  &.disabled,
+  &:disabled {
+    background-color: ${COLORS.GRAY8};
+    border-color: ${COLORS.GRAY8};
+    color: ${COLORS.WHITE1};
+  }
 
-    &-primary {
+  &-lg {
+    font-size: 18px;
+  }
+
+  &-primary {
+    background: ${COLORS.BLUE};
+    border-color: ${COLORS.BLUE};
+
+    &:hover {
+      opacity: .8;
       background: ${COLORS.BLUE};
       border-color: ${COLORS.BLUE};
-
-      &:hover {
-        opacity: .8;
-        background: ${COLORS.BLUE};
-        border-color: ${COLORS.BLUE};
-      }
     }
+  }
 
-    &-tertiary {
+  &-tertiary {
+    color: ${COLORS.WHITE};
+  }
+
+  &-lang {
+    min-width: 265px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    min-height: 58px;
+    color: ${COLORS.GRAY8};
+    border-color: ${COLORS.GRAY4};
+
+    &.is-active, &:hover {
+      background-color: ${COLORS.BLUE};
+      border-color: ${COLORS.BLUE};
       color: ${COLORS.WHITE};
     }
+  }
 
-    &-lang {
-      min-width: 265px;
-      margin-left: 15px;
-      margin-right: 15px;
-      min-height: 58px;
-      color: ${COLORS.GRAY8};
-      border-color: ${COLORS.GRAY4};
+  &-continue {
+    min-width: 265px;
+  }
 
-      &.is-active, &:hover {
-          background-color: ${COLORS.BLUE};
-          border-color: ${COLORS.BLUE};
-          color: ${COLORS.WHITE};
-      }
+  &-file {
+    position: relative;
+    font-size: $font-size-sm;
+
+    input[type=file] {
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      opacity: 0;
+      cursor: inherit;
+      display: block;
+      position: absolute;
     }
+  }
 
-    &-file {
-        position: relative;
-        font-size: $font-size-sm;
+  &-save {
+    min-width: 160px;
+  }
 
-        input[type=file] {
-            top: 0;
-            right: 0;
-            min-width: 100%;
-            min-height: 100%;
-            opacity: 0;
-            cursor: inherit;
-            display: block;
-            position: absolute;
-        }
-    }
+  &-back {
+    min-width: 148px;
+  }
 
-    &-save {
-        min-width: 160px;
-    }
+  &-reset {
+    min-width: 125px;
+  }
 
-    &-back {
-        min-width: 148px;
-    }
+  &-close {
+    min-width: 125px;
+  }
 
-    &-reset {
-        min-width: 125px;
-    }
+  &-submit {
+    min-width: 110px;
+  }
 
-    &-close {
-        min-width: 125px;
-    }
+  &-save-draft {
+    min-width: 148px;
+  }
 
-    &-submit {
-        min-width: 110px;
-    }
+  &-save-and-send {
+    min-width: 205px;
+  }
 
-    &-save-draft {
-        min-width: 148px;
-    }
+  &-create-contract {
+    min-width: 205px;
+  }
 
-    &-save-and-send {
-        min-width: 205px;
-    }
-
-    &-create-contract {
-        min-width: 205px;
-    }
-
-    &-icon {
-        padding: 0 5px;
-        line-height: 1;
-    }
+  &-icon {
+    padding: 0 5px;
+    line-height: 1;
+  }
 }
 
 .buttons-frontend {
-    .btn {
-        min-height: 50px;
+  .btn {
+    min-height: 50px;
 
-        &-reset {
-            min-width: 156px;
-        }
-
-        &-close {
-            min-width: 156px;
-        }
-
-        &-submit {
-            min-width: 136px;
-        }
+    &-reset {
+      min-width: 156px;
     }
+
+    &-close {
+      min-width: 156px;
+    }
+
+    &-submit {
+      min-width: 136px;
+    }
+  }
 }
 
 .buttons-admin {
-    .btn {
-        min-height: 40px;
+  .btn {
+    min-height: 40px;
 
-        &-search {
-            min-width: 132px;
-        }
-
-        &-create-contract {
-            min-width: 200px;
-        }
-
-        &-confirm-delete {
-            min-width: 140px;
-        }
-
-        &-cancle {
-            min-width: 98px;
-        }
+    &-search {
+      min-width: 132px;
     }
+
+    &-create-contract {
+      min-width: 200px;
+    }
+
+    &-confirm-delete {
+      min-width: 140px;
+    }
+
+    &-cancle {
+      min-width: 98px;
+    }
+  }
 }
 
 .file-upload {
-    &-statusbar {
-        color: $gray-700;
-        font-size: $font-size-xs;
-        font-family: $font-family-monospace;
-        padding: 11px 15px;
-        background-color: $gray-111;
+  &-statusbar {
+    color: $gray-700;
+    font-size: $font-size-xs;
+    font-family: $font-family-monospace;
+    padding: 11px 15px;
+    background-color: $gray-111;
 
-        .close {
-            width: 20px;
-            height: 20px;
-            background-color: $gray-600;
-            line-height: 0.5;
-            font-size: 14px;
-            text-shadow: none;
-            color: $white;
-        }
+    .close {
+      width: 20px;
+      height: 20px;
+      background-color: $gray-600;
+      line-height: 0.5;
+      font-size: 14px;
+      text-shadow: none;
+      color: $white;
     }
+  }
 }
 
-.button-continue, .buttons-group {
-    .btn {
-        margin-right: 15px;
+.button-continue, .buttons-group, .buttons-frontend {
+  .btn {
+    margin-right: 15px;
 
-        &:last-child {
-            margin-right: 0;
-        }
+    &:last-child {
+      margin-right: 0;
     }
+  }
 }
 
 .buttons-admin {
+  .btn {
+    line-height: 2;
+  }
+}
+
+@media screen and (max-width: ${SCREENS.MOBILELGMAX}) {
+  .buttons-frontend {
     .btn {
-        line-height: 2;
+      min-width: 100%;
+      margin-right: 0;
+      margin-left: 0;
     }
+  }
+}
+
+@media screen and (max-width: ${SCREENS.MOBILELGMAX}) {
+  .buttons-frontend {
+    .btn {
+      min-height: 40px;
+      /* font-size: ${FONTSIZES.PRIMARYBODYXS}; */
+    }
+  }
+}
+
+@media screen and (max-width: ${SCREENS.DESKTOPXS}) {
+  .button-continue {
+    .btn {
+      min-width: 200px;
+      min-height: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: ${SCREENS.DESKTOPLG}) {
+  .button-continue {
+    .btn {
+      min-width: 256px;
+    }
+  }
 }
 
   /* Test no effect global to local style

@@ -14,6 +14,7 @@ import { Icons } from 'themes'
 export const ContractProgressStyle = styled.div`
 	/* Parent styles
     ------------------------------- */
+  margin-bottom: 50px;
 
   .progressbar {
     margin: 0;
