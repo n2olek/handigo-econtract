@@ -1,0 +1,32 @@
+.navbar-brand {
+    max-width: 238px;
+    width: 100%;
+}
+
+.navbar-light {
+    .navbar-text {
+        font-family: $font-family-monospace;
+        color: $black;
+        font-size: $font-size-sm;
+    }
+}
+
+.navbar-nav {
+    li {
+        &:after {
+            content: '';
+            background-color: $gray-112;
+            width: 1px;
+            height: 56px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 25px;
+            margin-left: 30px;
+        }
+
+        &:last-child:after {
+            content: none;
+
+        }
+    }
+}

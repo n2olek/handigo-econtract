@@ -1,0 +1,17 @@
+@-webkit-keyframes autofill {
+    to {
+        background: transparent;
+        color: $gray-700;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
+input[type="password"]:not(:placeholder-shown) {
+    font: large Verdana,sans-serif;
+    letter-spacing: 1px;
+    font-size: 1.4em;
+}

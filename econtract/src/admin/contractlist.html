@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- These meta tags come first. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Contract List</title>
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="../assets/vendor/font-family/css/font-family.css" rel="stylesheet" type="text/css">
+
+    <!-- override Bootstrap core css and Include the CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css" rel="stylesheet">
+
+    </head>
+
+    <body class="bg-light">
+
+    <header class="navbar sticky-top navbar-expand-sm navbar-light bg-white pt-lg-3 pb-lg-3">
+        <a class="navbar-brand pt-lg-2 pb-lg-2" href="#">
+            <img src="../assets/images/logo-handigo-inline.svg" alt="">
+        </a>
+
+        <div class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <span class="navbar-text">
+                        Welcome to HandiGo E- Contract Signature
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-2" href="#" target="_self">
+                        <i class="handigo-icon handigo-icon-logout"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="header-title mt-10 mb-5 clearfix">
+                    <h2 class="text-dark float-left">Contract List</h2>
+
+                    <div class="buttons-group buttons-admin float-right mt-2">
+                        <button type="button" class="btn btn-sm btn-primary btn-create-contract"><i class="handigo-icon handigo-icon-create"></i> Create Contract</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="content bg-white rounded mb-5 p-5 clearfix">
+                    <form class="form-inline float-right clearfix mb-5">
+                        <div class="input-group search-contract-list">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="handigo-icon handigo-icon-search"></i></div>
+                            </div>
+                            <input class="form-control mr-sm-2 form-control-xl" type="search" placeholder="Search" aria-label="Search">
+                        </div>
+                        <div class="buttons-admin">
+                            <button class="btn btn-sm btn-primary btn-search" type="submit">Search</button>
+                        </div>
+                    </form>
+
+                    <div class="table-responsive-xl mb-6">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Hotel Name</th>
+                                    <th scope="col">Email Contacts</th>
+                                    <th scope="col">Modified Date</th>
+                                    <th scope="col">Modified Date</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Operations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>ABK Hotel</td>
+                                    <td>221abc@mail.com</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Draft</td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-edit-list btn-link"><i class="handigo-icon handigo-icon-edit-list"></i></button>
+                                        <button type="button" class="btn btn-icon btn-delete-list btn-link" data-toggle="modal" data-target="#conntractListDelete"><i class="handigo-icon handigo-icon-delete-list" ></i></button>
+                                        <button type="button" class="btn btn-icon btn-email-list btn-link"><i class="handigo-icon handigo-icon-email-list"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Maow Hotel</td>
+                                    <td>56abc@mail.com</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Draft</td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-edit-list btn-link"><i class="handigo-icon handigo-icon-edit-list"></i></button>
+                                        <button type="button" class="btn btn-icon btn-delete-list btn-link" data-toggle="modal" data-target="#conntractListDelete"><i class="handigo-icon handigo-icon-delete-list" ></i></button>
+                                        <button type="button" class="btn btn-icon btn-email-list btn-link"><i class="handigo-icon handigo-icon-email-list"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Maow Hotel</td>
+                                    <td>56abc@mail.com</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td><span class="status-sent text-primary">Sent</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-edit-list btn-link"><i class="handigo-icon handigo-icon-edit-list"></i></button>
+                                        <button type="button" class="btn btn-icon btn-delete-list btn-link" data-toggle="modal" data-target="#conntractListDelete"><i class="handigo-icon handigo-icon-delete-list" ></i></button>
+                                        <button type="button" class="btn btn-icon btn-email-list btn-link"><i class="handigo-icon handigo-icon-email-list"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Maow Hotel</td>
+                                    <td>009abc@mail.com</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td><span class="status-pendding text-tertiary">Pending for Approve</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-edit-list btn-link"><i class="handigo-icon handigo-icon-edit-list"></i></button>
+                                        <button type="button" class="btn btn-icon btn-delete-list btn-link" data-toggle="modal" data-target="#conntractListDelete"><i class="handigo-icon handigo-icon-delete-list" ></i></button>
+                                        <button type="button" class="btn btn-icon btn-email-list btn-link"><i class="handigo-icon handigo-icon-email-list"></i></button>
+                                        <button type="button" class="btn btn-xs btn-description-list btn-tertiary"><i class="handigo-icon handigo-icon-description-list"></i> View Contract</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>Zuza Hotel</td>
+                                    <td>432abc@mail.com</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td><span class="status-pendding text-tertiary">Pending for Approve</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-edit-list btn-link"><i class="handigo-icon handigo-icon-edit-list"></i></button>
+                                        <button type="button" class="btn btn-icon btn-delete-list btn-link" data-toggle="modal" data-target="#conntractListDelete"><i class="handigo-icon handigo-icon-delete-list" ></i></button>
+                                        <button type="button" class="btn btn-icon btn-email-list btn-link"><i class="handigo-icon handigo-icon-email-list"></i></button>
+                                        <button type="button" class="btn btn-xs btn-description-list btn-tertiary"><i class="handigo-icon handigo-icon-description-list"></i> View Contract</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>Orient Hotel</td>
+                                    <td>432abc@mail.com</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td><span class="status-pendding text-tertiary">Pending for Approve</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-edit-list btn-link"><i class="handigo-icon handigo-icon-edit-list"></i></button>
+                                        <button type="button" class="btn btn-icon btn-delete-list btn-link" data-toggle="modal" data-target="#conntractListDelete"><i class="handigo-icon handigo-icon-delete-list" ></i></button>
+                                        <button type="button" class="btn btn-icon btn-email-list btn-link"><i class="handigo-icon handigo-icon-email-list"></i></button>
+                                        <button type="button" class="btn btn-xs btn-description-list btn-tertiary"><i class="handigo-icon handigo-icon-description-list"></i> View Contract</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>Orient Hotel</td>
+                                    <td>432abc@mail.com</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td><span class="status-approved text-success">Approved</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-edit-list btn-link"><i class="handigo-icon handigo-icon-edit-list"></i></button>
+                                        <button type="button" class="btn btn-icon btn-delete-list btn-link" data-toggle="modal" data-target="#conntractListDelete"><i class="handigo-icon handigo-icon-delete-list" ></i></button>
+                                        <button type="button" class="btn btn-icon btn-email-list btn-link"><i class="handigo-icon handigo-icon-email-list"></i></button>
+                                        <button type="button" class="btn btn-xs btn-description-list btn-secondary"><i class="handigo-icon handigo-icon-description-list"></i> View Contract</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>Orient Hotel</td>
+                                    <td>432abc@mail.com</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td><span class="status-approved text-success">Approved</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-edit-list btn-link"><i class="handigo-icon handigo-icon-edit-list"></i></button>
+                                        <button type="button" class="btn btn-icon btn-delete-list btn-link" data-toggle="modal" data-target="#conntractListDelete"><i class="handigo-icon handigo-icon-delete-list" ></i></button>
+                                        <button type="button" class="btn btn-icon btn-email-list btn-link"><i class="handigo-icon handigo-icon-email-list"></i></button>
+                                        <button type="button" class="btn btn-xs btn-description-list btn-secondary"><i class="handigo-icon handigo-icon-description-list"></i> View Contract</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td>Farie Hotel</td>
+                                    <td>432abc@mail.com</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td><span class="status-approved text-success">Approved</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-edit-list btn-link"><i class="handigo-icon handigo-icon-edit-list"></i></button>
+                                        <button type="button" class="btn btn-icon btn-delete-list btn-link" data-toggle="modal" data-target="#conntractListDelete"><i class="handigo-icon handigo-icon-delete-list" ></i></button>
+                                        <button type="button" class="btn btn-icon btn-email-list btn-link"><i class="handigo-icon handigo-icon-email-list"></i></button>
+                                        <button type="button" class="btn btn-xs btn-description-list btn-secondary"><i class="handigo-icon handigo-icon-description-list"></i> View Contract</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10</th>
+                                    <td>ELLE Hotel</td>
+                                    <td>354abc@mail.com</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td>Dec 22, 2017 01:27 PM</td>
+                                    <td><span class="status-approved text-success">Approved</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-icon btn-edit-list btn-link"><i class="handigo-icon handigo-icon-edit-list"></i></button>
+                                        <button type="button" class="btn btn-icon btn-delete-list btn-link" data-toggle="modal" data-target="#conntractListDelete"><i class="handigo-icon handigo-icon-delete-list" ></i></button>
+                                        <button type="button" class="btn btn-icon btn-email-list btn-link"><i class="handigo-icon handigo-icon-email-list"></i></button>
+                                        <button type="button" class="btn btn-xs btn-description-list btn-secondary"><i class="handigo-icon handigo-icon-description-list"></i> View Contract</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <nav aria-label="Page navigation " class="float-right clearfix">
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="conntractListDelete" tabindex="-1" role="dialog" aria-labelledby="conntractListDelete" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header pl-17 pr-17">
+                    <h5 class="modal-title text-dark" id="exampleModalLongTitle"><i class="handigo-icon handigo-icon-confirm-delete"></i> Confirm delete</h5>
+                </div>
+                <div class="modal-body p-17">
+                    <p class="pb-5">Are you sure you want to delete this contract ?</p>
+                </div>
+                <div class="modal-footer pl-17 pr-17">
+                    <div class="buttons-group buttons-admin">
+                        <div class="float-right">
+                            <button type="button" class="btn btn-sm btn-secondary btn-cancle" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-sm btn-tertiary btn-confirm-delete">Confirm Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery (required) -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- Include the custom JS -->
+    <script src="../assets/js/custom.js"></script>
+
+    </body>
+</html>

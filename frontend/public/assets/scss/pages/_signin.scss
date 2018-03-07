@@ -1,0 +1,83 @@
+html, body{
+    //height:100%;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 410px;
+    padding: 15px;
+    margin: 0 auto;
+    display: table;
+
+    img {
+        max-width: 165px;
+    }
+
+    input {
+        border: none;
+        border-bottom: 2px solid $gray-110;
+        border-radius: 0;
+        font-family: $font-family-monospace;
+        min-height: 38px;
+
+        &:focus {
+            border-color: $orange;
+            box-shadow: none;
+        }
+    }
+}
+
+.bg-signin {
+    background: url('../images/bg-signup.jpg') no-repeat center;
+    background-size: cover;
+}
+
+#signinForm {
+    .invalid-feedback {
+        background: rgba($orange, 0.15);;
+        width: 100%;
+        padding: 7px 10px;
+        color: $orange-100;
+        margin-top: 5px;
+        border-radius: 3px;
+    }
+
+    .is-invalid {
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.form-signin-wrapper {
+    margin-top: 50px;
+}
+
+.footer-buttom {
+    font-size: $font-size-xs;
+}
+
+@include media-breakpoint-up(lg) {
+    .form-signin-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        height:100vh;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .footer-buttom {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .bg-signin {
+        display: none;
+    }
+}

@@ -1,0 +1,199 @@
+.btn-xs {
+  @include button-size($btn-padding-y-xs, $btn-padding-x-xs, $font-size-xxs, $btn-line-height-xs, $btn-border-radius-xs);
+}
+
+
+.btn {
+    // Disabled comes first so active can properly restyle
+    &.disabled,
+    &:disabled {
+        background-color: $gray-900;
+        border-color: $gray-900;
+        color: rgba($white, .4);
+    }
+
+    &-tertiary {
+        color: $white;
+    }
+
+    &-lang {
+        min-width: 265px;
+        margin-left: 15px;
+        margin-right: 15px;
+        min-height: 58px;
+        color: $gray-900;
+        border-color: $gray-400;
+
+        &.is-active, &:hover {
+            background-color: $blue;
+            border-color: $blue;
+            color: $white;
+        }
+    }
+
+    &-file {
+        position: relative;
+        font-size: $font-size-sm;
+
+        input[type=file] {
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            opacity: 0;
+            cursor: inherit;
+            display: block;
+            position: absolute;
+        }
+    }
+
+    &-save {
+        min-width: 160px;
+    }
+
+    &-back {
+        min-width: 148px;
+    }
+
+    &-reset {
+        min-width: 125px;
+    }
+
+    &-close {
+        min-width: 125px;
+    }
+
+    &-submit {
+        min-width: 110px;
+    }
+
+    &-save-draft {
+        min-width: 148px;
+    }
+
+    &-save-and-send {
+        min-width: 205px;
+    }   
+
+    &-create-contract {
+        min-width: 205px;
+    }
+
+    &-icon {
+        padding: 0 5px;
+        line-height: 1;
+    }
+}
+
+.buttons-frontend {
+    .btn {
+        min-height: 50px;   
+
+        &-reset {
+            min-width: 156px;
+        }
+
+        &-close {
+            min-width: 156px;
+        }
+
+        &-submit {
+            min-width: 136px;
+        }
+    }
+}
+
+.buttons-admin {
+    .btn {
+        min-height: 40px;
+
+        &-search {
+            min-width: 132px;
+        }
+
+        &-create-contract {
+            min-width: 200px;
+        }
+
+        &-confirm-delete {
+            min-width: 140px;
+        }
+
+        &-cancle {
+            min-width: 98px;
+        }
+    }
+}
+
+.file-upload {
+    &-statusbar {
+        color: $gray-700;
+        font-size: $font-size-xs;
+        font-family: $font-family-monospace;
+        padding: 11px 15px;
+        background-color: $gray-111;
+
+        .close {
+            width: 20px;
+            height: 20px;
+            background-color: $gray-600;
+            line-height: 0.5;
+            font-size: 14px;
+            text-shadow: none;
+            color: $white;
+        }
+    }
+}
+
+.button-continue, .buttons-group {
+    .btn {
+        margin-right: 15px;
+        //font-size: 18px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.buttons-admin {
+    .btn {
+        line-height: 2;
+        //min-width: 125px;
+    }
+}
+
+@include media-breakpoint-down(xs) {
+    .buttons-frontend {
+        .btn {
+            min-width: 100%;
+            margin-right: 0;
+        }
+    }
+}
+
+@include media-breakpoint-down(xl) {
+    .buttons-frontend {
+        .btn {
+            min-height: 40px;
+            font-size: $font-size-sm;
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .button-continue {
+        .btn {
+            min-width: 200px;
+            min-height: 50px;
+        }
+    }
+}
+
+@include media-breakpoint-up(xxl) {
+    .button-continue {
+        .btn {
+            min-width: 256px;
+        }
+    }
+}

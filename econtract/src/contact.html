@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- These meta tags come first. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Contract Form : Fill In Your Information</title>
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="assets/vendor/font-family/css/font-family.css" rel="stylesheet" type="text/css">
+
+    <!-- override Bootstrap core css and Include the CSS -->
+    <link rel="stylesheet" href="assets/css/main.css" rel="stylesheet">
+
+    </head>
+
+    <body class="bg-light">
+
+    <header class="navbar sticky-top navbar-expand-sm navbar-light bg-white pt-lg-3 pb-lg-3">
+        <a class="navbar-brand pt-lg-2 pb-lg-2" href="#">
+            <img src="assets/images/logo-handigo-inline.svg" alt="">
+        </a>
+
+        <div class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <span class="navbar-text">
+                        Welcome to HandiGo E- Contract Signature
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-2" href="#" target="_self">
+                        <i class="handigo-icon handigo-icon-logout"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="header-title text-center mt-10 mb-5">
+                    <h2 class="text-center text-dark">Contract Form</h2>
+                </div>
+
+                <ul class="progressbar">
+                    <li class="is-checked"><p>Language</p></li>
+                    <li class="is-active"><p>Contract form</p></li>
+                    <li><p>Sign contract</p></li>
+                    <li><p>Complete</p></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="content bg-white rounded mt-5 mb-5 p-5">
+                    <div class="header-title text-left mt-3 mb-4 offset-md-2 mb-8">
+                        <h4 class="text-dark">Fill In Your Information</h4>
+                        <p>Please fill in every require fields.</p>
+                    </div>
+
+                    <form id="contactForm" method="get" action="">
+                        <div class="form-group row">
+                            <label for="hotelName" class="col-lg-4 offset-lg-1 col-form-label">Hotel Name</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control form-control-xl is-invalid" name="hotelName" id="hotelName" placeholder="Insert hotel name" required>
+                                <span class="needs-validation">&#8226;</span>
+                                <div class="invalid-feedback">Require fields</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="companyName" class="col-lg-4 offset-lg-1 col-form-label">Company Name</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control form-control-xl" id="companyName" placeholder="Insert company name" required>
+                                <span class="needs-validation">&#8226;</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="companyAddress" class="col-lg-4 offset-lg-1 col-form-label">Company Address</label>
+                            <div class="col-lg-5">
+                                <textarea class="form-control" id="companyAddress" rows="3" placeholder="Insert company address"></textarea>
+                                <span class="needs-validation">&#8226;</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-4"></div>
+
+                        <div class="form-group row">
+                            <label for="nameofauthorized" class="col-lg-4 offset-lg-1 col-form-label">Name of Authorized Person</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control form-control-xl" id="nameofauthorized" placeholder="Insert name of authorized person">
+                                <span class="needs-validation">&#8226;</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="positionofauthorized" class="col-lg-4 offset-lg-1 col-form-label">Position of Authorized Person</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control form-control-xl" id="positionofauthorized" placeholder="Insert position of authorized person">
+                                <span class="needs-validation">&#8226;</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nameofwitness" class="col-lg-4 offset-lg-1 col-form-label">Name of Witness</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control form-control-xl" id="nameofwitness" placeholder="Insert name of witness">
+                                <span class="needs-validation">&#8226;</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="positionofwitness" class="col-lg-4 offset-lg-1 col-form-label">Position of Witness</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control form-control-xl" id="positionofwitness" placeholder="Insert position of witness">
+                                <span class="needs-validation">&#8226;</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-4"></div>
+
+                        <div class="form-group row">
+                            <label for="nameofauthorized" class="col-lg-4 offset-lg-1 col-form-label">Upload File</label>
+                            <div class="col-lg-5">
+                                <div id="mulitplefileuploader" class="mulitplefileuploader">
+                                    <div class="btn btn-tertiary btn-xs btn-file mb-3">
+                                        <span>Browse file</span>
+                                        <input id="input-b5" name="input-b5[]" type="file" multiple>
+                                    </div>
+
+                                    <div class="file-upload-container">
+                                        <div class="file-upload-statusbar rounded mb-3">
+                                            <i class="handigo-icon handigo-icon-attached"></i>
+                                            <span>Authorized_person_id.jpg</span>
+                                            <button type="button" class="close rounded-circle" aria-label="Close">
+                                                <i class="handigo-icon handigo-icon-close"></i>
+                                            </button>
+                                        </div>
+                                        <div class="file-upload-statusbar rounded mb-3">
+                                            <i class="handigo-icon handigo-icon-attached"></i>
+                                            <span>Authorized_person_id_new.jpg</span>
+                                            <button type="button" class="close rounded-circle" aria-label="Close">
+                                                <i class="handigo-icon handigo-icon-close"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mt-15 mb-4">
+
+                        <div class="buttons-group button-continue float-right mt-2">
+                            <button type="button" class="btn btn-lg btn-secondary btn-back">Back</button>
+                            <button type="button" class="btn btn-lg btn-tertiary btn-draft">Save Draft</button>
+                            <button type="button" class="btn btn-lg btn-primary btn-continue">Save &#38; Continue</button>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-wrapper position-absolute">
+        <div class="alert alert-warning" role="alert">
+            Please fill in every require fields.
+        </div>
+        <div class="alert alert-success" role="alert">
+            <i class="handigo-icon handigo-icon-success"></i>
+            Success ! Save draft complete.
+        </div>
+    </div>
+
+    <!-- Include jQuery (required) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Include the custom JS -->
+    <script src="assets/js/custom.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,36 @@
+/*
+// //////////////////////////////////////////////////////////////////////////////////////////////////
+// ==================================================================================================
+//
+// Fonts (embed)
+// * OpenSans Regular
+// * GothamRounded Bold
+//
+// ==================================================================================================
+// //////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+/*
+// OpenSans Regular
+// ============================================================
+*/
+@font-face {
+  font-family: 'OpenSans Regular';
+  src: url('../fonts/opensans/opensans-regular.eot');
+  src: url('../fonts/opensans/opensans-regular.woff') format('woff'),
+       url('../fonts/opensans/opensans-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*
+// GothamRounded-Bold
+// ============================================================ */
+@font-face {
+  font-family: 'GothamRounded Bold';
+  src: url('../fonts/gothamrounded/gothamrounded-bold.eot');
+  src: url('../fonts/gothamrounded/gothamrounded-bold.woff') format('woff'),
+       url('../fonts/gothamrounded/gothamrounded-bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,25 @@
+version: "2"
+services:
+  web:
+    image: web
+    container_name: web
+    ports:
+      - 80:80
+    expose:
+      - 80 
+    depends_on:
+      - mongo
+      - backend
+  mongo:
+    image: pop31778/alpineweb:latest
+    container_name: mongo
+    command: node hello.js
+    ports:
+      - 3002:3000
+  backend:
+    image: pop31778/alpineweb:latest
+    container_name: backend
+    command: node hello.js
+    ports:
+      - 3001:3000
+    

@@ -1,0 +1,1 @@
+export { default as SignaturePadComponent } from './SignaturePadComponent'

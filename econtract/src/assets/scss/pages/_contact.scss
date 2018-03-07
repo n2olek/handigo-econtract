@@ -1,0 +1,9 @@
+@include media-breakpoint-up(lg) {
+    #contactForm {
+        .invalid-feedback {
+            position: absolute;
+            top: 10px;
+            right: -78px;
+        }
+    }
+}

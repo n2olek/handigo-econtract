@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- These meta tags come first. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Contract List : Create new Contract </title>
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="../assets/vendor/font-family/css/font-family.css" rel="stylesheet" type="text/css">
+
+    <!-- override Bootstrap core css and Include the CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css" rel="stylesheet">
+
+    </head>
+
+    <body class="bg-light">
+
+    <header class="navbar sticky-top navbar-expand-sm navbar-light bg-white pt-lg-3 pb-lg-3">
+        <a class="navbar-brand pt-lg-2 pb-lg-2" href="#">
+            <img src="../assets/images/logo-handigo-inline.svg" alt="">
+        </a>
+
+        <div class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <span class="navbar-text">
+                        Welcome to HandiGo E- Contract Signature
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-2" href="#" target="_self">
+                        <i class="handigo-icon handigo-icon-logout"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="header-title mt-10 mb-5">
+                    <h2 class="text-dark">Create New Contract</h2>
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Contract List</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create new Contract</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="content bg-white rounded mb-5 p-5">
+                    <form class="editprofile" id="editprofile" method="get" action="">
+                        <div class="form-group row">
+                            <label for="hotelName" class="col-lg-4 col-xxl-3 col-form-label">Hotel Name</label>
+                            <div class="col-lg-6 col-xxl-5">
+                                <input type="text" class="form-control form-control-xl is-invalid" name="hotelName" id="hotelName" placeholder="Insert hotel name" value="ABK Hotel" required>
+                                <span class="needs-validation">&#8226;</span>
+                                <div class="invalid-feedback">Require fields</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="contactEmail" class="col-lg-4 col-xxl-3 col-form-label">Contact Email</label>
+                            <div class="col-lg-6 col-xxl-5">
+                                <input type="text" class="form-control form-control-xl is-invalid" name="contactEmail" id="contactEmail" placeholder="Insert contact email" value="abk@mail.com" required>
+                                <span class="needs-validation">&#8226;</span>
+                                <div class="invalid-feedback">Require fields</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="companyName" class="col-lg-4 col-xxl-3 col-form-label">Company Name</label>
+                            <div class="col-lg-6 col-xxl-5">
+                                <input type="text" class="form-control form-control-xl" name="companyName" id="companyName" placeholder="Insert company name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="companyAddress" class="col-lg-4 col-xxl-3 col-form-label">Company Address</label>
+                            <div class="col-lg-6 col-xxl-5">
+                                <textarea class="form-control" id="companyAddress" rows="3" placeholder="Insert company address"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-4"></div>
+
+                        <div class="form-group row">
+                            <label for="nameofauthorized" class="col-lg-4 col-xxl-3 col-form-label">Name of Authorized Person</label>
+                            <div class="col-lg-6 col-xxl-5">
+                                <input type="text" class="form-control form-control-xl" name="nameofauthorized" id="nameofauthorized" placeholder="Insert name of authorized person">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="positionofauthorized" class="col-lg-4 col-xxl-3 col-form-label">Position of Authorized Person</label>
+                            <div class="col-lg-6 col-xxl-5">
+                                <input type="text" class="form-control form-control-xl" id="positionofauthorized" placeholder="Insert position of authorized person">
+                                <span class="needs-validation">&#8226;</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nameofwitness" class="col-lg-4 col-xxl-3 col-form-label">Name of Witness</label>
+                            <div class="col-lg-6 col-xxl-5">
+                                <input type="text" class="form-control form-control-xl" id="nameofwitness" placeholder="Insert name of witness">
+                                <span class="needs-validation">&#8226;</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="positionofwitness" class="col-lg-4 col-xxl-3 col-form-label">Position of Witness</label>
+                            <div class="col-lg-6 col-xxl-5">
+                                <input type="text" class="form-control form-control-xl" id="positionofwitness" placeholder="Insert position of witness">
+                                <span class="needs-validation">&#8226;</span>
+                            </div>
+                        </div>
+
+                        <hr class="mt-15 mb-4">
+
+                        <div class="buttons-group buttons-admin float-right mt-2">
+                            <button type="button" class="btn btn-sm btn-secondary btn-back">Back</button>
+                            <button type="button" class="btn btn-sm btn-tertiary btn-save-draft">Save Draft</button>
+                            <button type="button" class="btn btn-sm btn-primary btn-save-and-send">Save &#38; Send Contract</button>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery (required) -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- Include the custom JS -->
+    <script src="../assets/js/custom.js"></script>
+
+    </body>
+</html>

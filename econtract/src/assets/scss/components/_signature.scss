@@ -1,0 +1,134 @@
+.signature-body {
+    min-height: 165px;
+    position: relative;
+    cursor: pointer;
+    padding: 30px;
+}
+
+.signature-default {
+    font-family: $font-family-monospace;
+}
+
+.signature-content {
+    //position: relative;
+
+    .handigo-icon-edit-signature {
+        width: 42px;
+        height: 42px;
+        display: table;
+        text-align: center;
+        position: absolute;
+        right: -15px;
+        top: -15px;
+    }
+
+    hr {
+        border-color: $gray-800;
+    }
+}
+
+.signature-view {
+    img {
+        max-height: 80px;
+    }
+}
+
+//model
+
+#signatureWitness, #signatureClient {
+    .signature-body {
+        min-height: 320px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .signature-default {
+        font-size: $font-size-lg;
+    }
+
+    .modal-footer {
+        display: block;
+    }
+
+    @include media-breakpoint-up(xl) {
+        .modal-dialog {
+            max-width: 900px;
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+    }
+}
+
+#signatureStaff, #conntractListDelete {
+    p {
+        font-family: $font-family-monospace;
+        font-size: $font-size-sm;
+        color: $gray-600;
+    }
+
+    .signature-default {
+        font-size: $font-size-xs;
+    }
+
+    .signature-body {
+        min-height: 165px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .signature-default {
+        font-family: $font-family-monospace;
+        font-size: $font-size-lg;
+    }
+
+    .signature-body {
+        min-height: 320px;
+    }
+
+    .modal-title {
+        font-size: $font-size-xs;
+        font-family: $font-family-monospace;
+    }
+
+    .modal-footer {
+        display: block;
+    }
+
+    .modal-title {
+        font-size: $font-size-lg;
+    }
+
+    .handigo-icon {
+        &-signature {
+            &:before {
+                width: 60px;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    #signatureStaff {
+        .modal-dialog {
+            max-width: 900px;
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+    }
+
+    #conntractListDelete {
+        .modal-dialog {
+            max-width: 660px;
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+    }
+}
+
+

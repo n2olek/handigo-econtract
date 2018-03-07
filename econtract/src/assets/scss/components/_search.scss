@@ -1,0 +1,17 @@
+.search-contract-list {
+    min-width: 288px;
+    border: none;
+    min-height: 40px;
+
+    .input-group-text {
+    	background-color: $gray-113;
+    	border-right: none;
+    	padding-right: 0;
+    }
+
+    input[type="search"] {
+    	border-left: none;
+    	background-color: $gray-113;
+    	padding-left: 0;
+    }
+}

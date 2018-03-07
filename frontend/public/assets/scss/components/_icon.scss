@@ -1,0 +1,186 @@
+.handigo-icon {
+    &:before {
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    &-success {
+
+        &:before {
+            content: url(../images/icon-success.svg);
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            left: 30px;
+        }
+    }
+
+    &-attached {
+
+        &:before {
+            content: url(../images/icon-attached.svg);
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    &-checked {
+
+        &:before {
+            content: url(../images/icon-checked.svg);
+            width: 13px;
+            height: 8px;
+            margin-right: 0;
+            margin-left: -2px;
+            display: block;
+        }
+    }
+
+    &-logout {
+        &:before {
+            content: url(../images/icon-logout.svg);
+            width: 26px;
+            display: block;
+            margin-top: 10px;
+        }
+    }
+
+    &-thai {
+        &:before {
+            content: url(../images/lang-thai.svg);
+            width: 25px;
+            margin-right: 20px;
+        }
+    }
+
+    &-eng {
+        &:before {
+            content: url(../images/lang-eng.svg);
+            width: 25px;
+            margin-right: 20px;
+        }
+    }
+
+    &-viewcontract {
+        &:before {
+            content: url(../images/icon-description.svg);
+            width: 14px;
+            margin-right: 20px;
+        }
+    }
+
+    &-viewcontract-hover {
+        &:before {
+            content: url(../images/icon-description-hover.svg);
+            width: 14px;
+            margin-right: 20px;
+        }
+    }
+
+    &-close {
+        &:before {
+            content: url(../images/icon-close.svg);
+            width: 10px;
+            margin: auto;
+        }
+    }
+
+    &-download {
+        &:before {
+            content: url(../images/icon-download.svg);
+            width: 14px;
+        }
+    }
+
+    &-signature {
+        &:before {
+            content: url(../images/icon-signature.svg);
+            width: 38px;
+        }
+    }
+
+    &-edit-signature {
+        &:before {
+            content: url(../images/icon-edit-signature.svg);
+            width: 18px;
+            margin-right: 0;
+            margin-top: 10px;
+        }
+    }
+
+    &-reset {
+        &:before {
+            content: url(../images/icon-reset.svg);
+            width: 10px;
+        }
+    }
+
+    &-create {
+        &:before {
+            content: url(../images/icon-create.svg);
+            width: 17px;
+            line-height: 1;
+        }
+    }
+
+    &-description-list {
+        &:before {
+            content: url(../images/icon-description-list.svg);
+            width: 10px;
+            margin-right: 5px;
+        }
+    }
+
+    &-email-list {
+        &:before {
+            content: url(../images/icon-email-list.svg);
+            width: 17px;
+            margin-right: 0;
+        }
+    }
+
+    &-delete-list {
+        &:before {
+            content: url(../images/icon-delete-list.svg);
+            width: 11px;
+            margin-right: 0;
+        }
+    }
+
+    &-edit-list {
+        &:before {
+            content: url(../images/icon-edit-list.svg);
+            width: 14px;
+            margin-right: 0;
+        }
+    }
+
+    &-search {
+        &:before {
+            content: url(../images/icon-search.svg);
+            width: 17px;
+            line-height: 1;
+        }
+    }
+
+    &-confirm-delete {
+        &:before {
+            content: url(../images/icon-confirm-delete.svg);
+            width: 21px;
+            line-height: 1;
+        }
+    }
+}
+
+.btn {
+    &:hover {
+        .handigo-icon {
+            &-viewcontract {
+                &:before {
+                    content: url(../images/icon-description-hover.svg);
+                }
+            }
+        }
+    }
+}

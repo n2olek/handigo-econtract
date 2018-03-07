@@ -1,0 +1,9 @@
+@if $enable-grid-classes {
+
+    @include media-breakpoint-up(xl) {
+        .container-fluid {
+            padding-left: 6rem;
+            padding-right: 6rem ;
+        }
+    }
+}

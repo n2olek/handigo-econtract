@@ -1,0 +1,120 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Handigo_eContract",
+		"_postman_id": "f189d5e2-ff7f-b314-86c5-75613097fbb3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "generate contract PDF",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"// check status",
+							"tests[\"status is OK\"] = jsonData.result === \"success\";",
+							"",
+							"// PDF is available",
+							"tests[\"PDF linked is provided\"] = jsonData.message.length > 0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "{{URL}}?date={{date}}&company_name={{company_name}}&company_address={{company_address}}&authorized_person={{authorized_person}}&authorized_position={{authorized_position}}&bizdev={{bizdev}}",
+					"host": [
+						"{{URL}}"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "{{date}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "company_name",
+							"value": "{{company_name}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "company_address",
+							"value": "{{company_address}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "authorized_person",
+							"value": "{{authorized_person}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "authorized_position",
+							"value": "{{authorized_position}}",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "bizdev",
+							"value": "{{bizdev}}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Generate PDF (GET)"
+			},
+			"response": []
+		},
+		{
+			"name": "generate contract PDF <<STILL NOT WORKING, security concern>>",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"// check status",
+							"tests[\"status is OK\"] = jsonData.result === \"success\";",
+							"",
+							"// PDF is available",
+							"tests[\"PDF linked is provided\"] = jsonData.message.length > 0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{URL}}",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"date\":{{date}},\n\t\"company_name\":{{company_name}},\n\t\"company_address\":{{company_address}},\n\t\"authorized_person\":{{authorized_person}},\n\t\"authorized_position\":{{authorized_position}},\n\t\"bizdev\":{{bizdev}}\n}"
+				},
+				"description": "Generate PDF (GET)"
+			},
+			"response": []
+		}
+	]
+}

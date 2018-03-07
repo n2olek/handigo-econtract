@@ -1,0 +1,150 @@
+// stylelint-disable
+$gray-100:      #f6f9fa;
+$gray-200:      #cecfd0;
+$gray-400:      #e8e9ec;
+$gray-600:      #898989;
+$gray-700:      #4d4f5c;
+
+$gray-800:      #43425d;
+$gray-900:      #b9b9b9;
+$gray-110:      #f1f1f1;
+$gray-111:      #f5f5f5;
+$gray-112:      #e1e1e1;
+$gray-113:      #f8f8f8;
+
+$blue:          #0aaccc;
+$orange:        #ff8425;
+$orange-100:    #aa4a00;
+$green:         #0acc28;
+$green-100:     #09842f;
+$warning:       $orange;
+$black:         #000;
+
+$theme-colors: ();
+$theme-colors: map-merge((
+  "tertiary":    $orange,
+
+), $theme-colors);
+// stylelint-enable
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:            'GothamRounded-Bold', sans-serif;
+$font-family-monospace:             'opensansRegular', sans-serif;
+
+$font-size-base:                    1rem; // Assumes the browser default, typically `16px`
+
+$font-size-xxs:                      ($font-size-base * 0.5); //10px
+$font-size-xs:                      ($font-size-base * 0.75); //12px
+$font-size-sm:                      ($font-size-base * .875); //14px
+$font-size-lg:                      ($font-size-base * 1.125); //18px
+$font-size-lg:                      ($font-size-base * 1.125); //18px
+
+$navbar-brand-font-size:            $font-size-sm;
+
+$navbar-light-color:                $black;
+// stylelint-disable
+// 1: 4px
+// 2: 8px
+// 3: 16px
+// 4: 24px
+// 5: 48px
+// 6: 56px
+// 7: 64px
+// 8: 72px
+
+$spacer: 1rem;
+$spacers: ();
+$spacers: map-merge((
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3),
+    6: ($spacer * 3.5),
+    7: ($spacer * 4),
+    8: ($spacer * 4.5),
+    9: ($spacer * 5),
+    10: ($spacer * 5.5),
+    11: ($spacer * 6),
+    12: ($spacer * 6.5),
+    13: ($spacer * 7),
+    14: ($spacer * 7.5),
+    15: ($spacer * 8),
+    16: ($spacer * 2),
+    17: ($spacer * 2.5),
+    18: ($spacer * 8.5),
+
+), $spacers);
+
+$border-radius-xs:              .3rem;
+
+$btn-border-radius-xs:          $border-radius-xs;
+
+// Define common padding and border radius sizes and more.
+$line-height-xs:                        1;
+$line-height-sm:                        2.5;
+$line-height-xl:                        1.5;
+
+//Form
+$input-placeholder-color:               $gray-200;
+
+$input-btn-padding-y-xl:                .65rem;
+$input-btn-padding-x-xl:                1rem;
+$input-btn-line-height-xl:              $line-height-xl;
+
+$input-padding-y-xl:                    $input-btn-padding-y-xl;
+$input-padding-x-xl:                    $input-btn-padding-x-xl;
+$input-line-height-xl:                  $input-btn-line-height-xl;
+
+$input-btn-padding-y-xs:                .2rem;
+$input-btn-padding-x-xs:                .5rem;
+$input-btn-line-height-xs:              $line-height-xs;
+
+$btn-padding-y-xs:                      $input-btn-padding-y-xs;
+$btn-padding-x-xs:                      $input-btn-padding-x-xs;
+$btn-line-height-xs:                    $input-btn-line-height-xs;
+
+$form-group-margin-bottom:              1.25rem;
+
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+$table-cell-padding:                    .5rem;
+$table-accent-bg:                       $gray-113;
+
+// Form validation
+$form-feedback-invalid-color:           $orange;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1570px
+);
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1510px
+);
+
+// Modals
+
+// Padding applied to the modal body
+$modal-backdrop-opacity:      .7 !default;
+
+@import "node_modules/bootstrap/scss/bootstrap";

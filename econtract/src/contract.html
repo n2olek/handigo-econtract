@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- These meta tags come first. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Sign Contract</title>
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="assets/vendor/font-family/css/font-family.css" rel="stylesheet" type="text/css">
+
+    <!-- override Bootstrap core css and Include the CSS -->
+    <link rel="stylesheet" href="assets/css/main.css" rel="stylesheet">
+
+    </head>
+
+    <body class="bg-light">
+
+    <header class="navbar sticky-top navbar-expand-sm navbar-light bg-white pt-lg-3 pb-lg-3">
+        <a class="navbar-brand pt-lg-2 pb-lg-2" href="#">
+            <img src="assets/images/logo-handigo-inline.svg" alt="">
+        </a>
+
+        <div class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <div class="navbar-text">
+                        <span>Welcome to</span> HandiGo E- Contract Signature
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-2" href="#" target="_self">
+                        <i class="handigo-icon handigo-icon-logout"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="header-title text-center mt-10 mb-5">
+                    <h2 class="text-center text-dark">Sign Contract</h2>
+                </div>
+
+                <ul class="progressbar">
+                    <li class="is-checked"><p>Language</p></li>
+                    <li class="is-checked"><p>Contract form</p></li>
+                    <li class="is-active"><p>Sign contract</p></li>
+                    <li><p>Complete</p></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="content bg-white rounded mt-5 mb-5 pl-xxl-14 pr-xxl-14 p-3 pt-xxl-5 pb-xxl-5">
+                    <div class="scrollbar scrollbar-primary">
+                        <div class="force-overflow">
+                            <div class="card card-contract">
+                                <div class="card-body text-dark">
+                                    <img src="assets/images/example-pdf.jpg" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="signature signature-wrapper m-3 m-xl-5">
+                        <div class="row">
+                            <div class="signature-content pl-xl-8 pr-xl-8 col-sm-6 col-xl-5 offset-xl-1">
+                                <p class="signature-title">By</p>
+                                <div data-toggle="modal" data-target="#signatureClient">
+                                    <div class="signature-body border border-primary rounded text-center text-primary align-items-center row m-0">
+                                        <div class="my-auto mx-auto">
+                                            <div class="signature-view">
+                                                <img src="../assets/images/example-lg.jpg" alt="" class="img-fluid">
+                                            </div>
+                                        </div>
+                                        <i class="handigo-icon handigo-icon-edit-signature bg-primary rounded-circle"></i>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="signature-by text-center mt-2">Mr. Sakdidet Poolsawad</div>
+                            </div>
+                            <div class="signature-content pl-xl-8 pr-xl-8 col-sm-6 col-xl-5">
+                                <p class="signature-title">Witness</p>
+                                <div data-toggle="modal" data-target="#signatureWitness">
+                                    <div class="signature-body border border-primary rounded text-center text-primary align-items-center row m-0">
+                                        <div class="my-auto mx-auto">
+                                            <div class="signature-default">
+                                                <i class="handigo-icon handigo-icon-signature"></i>
+                                                <p class="mt-2">Click here to signed</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="signature-witness text-center mt-2">Witness: Somchai Marew</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="buttons-group buttons-frontend mt-2 clearfix">
+                        <div class="float-left">
+                            <button type="button" class="btn btn-lg btn-tertiary btn-download mb-2"><i class="handigo-icon handigo-icon-download"></i> Download as PDF</button>
+                            <button type="button" class="btn btn-lg btn-tertiary btn-gerenate mb-2">Gerenate Contract</button>
+                        </div>
+                        <div class="float-right">
+                            <button type="button" class="btn btn-lg btn-secondary btn-back mb-2">Back</button>
+                            <button type="button" class="btn btn-lg btn-primary btn-continue mb-2">Save &#38; Send Contract</button>
+                            <button type="button" class="btn btn-lg btn-primary btn-continue d-none mb-2" disabled>Save &#38; Send Contract</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signatureClient" tabindex="-1" role="dialog" aria-labelledby="signatureClient" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header pl-17 pr-17 bg-primary">
+                    <h4 class="modal-title text-white" id="exampleModalLongTitle">Signature of Authorized Person</h4>
+                </div>
+                <div class="modal-body p-17">
+                    <div class="signature-content col">
+                        <div class="signature-body border border-primary rounded text-center text-primary align-items-center row">
+                            <div class="my-auto mx-auto">
+                                <div class="signature-default d-none">
+                                    <i class="handigo-icon handigo-icon-signature"></i>
+                                    <p class="mt-2"></p>
+                                </div>
+                                <div class="signature-view">
+                                    <img src="../assets/images/example-lg.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer pl-17 pr-17">
+                    <div class="buttons-group buttons-frontend">
+                        <div class="float-left">
+                            <button type="button" class="btn btn-lg btn-tertiary btn-reset"><i class="handigo-icon handigo-icon-reset"></i> Reset</button>
+                        </div>
+                        <div class="float-right">
+                            <button type="button" class="btn btn-lg btn-secondary btn-close" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-lg btn-primary btn-submit" disabled>OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signatureWitness" tabindex="-1" role="dialog" aria-labelledby="signatureWitness" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header pl-17 pr-17 bg-primary">
+                    <h4 class="modal-title text-white" id="exampleModalLongTitle">Signature of Authorized Person</h4>
+                </div>
+                <div class="modal-body p-17">
+                    <div class="signature-content col">
+                        <div class="signature-body border border-primary rounded text-center text-primary align-items-center row">
+                            <div class="my-auto mx-auto">
+                                <div class="signature-default">
+                                    <i class="handigo-icon handigo-icon-signature"></i>
+                                    <p class="mt-2">Move and Drag to signed</p>
+                                </div>
+                                <div class="signature-view d-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer pl-17 pr-17">
+                    <div class="buttons-group buttons-frontend">
+                        <div class="float-left">
+                            <button type="button" class="btn btn-lg btn-tertiary btn-reset"><i class="handigo-icon handigo-icon-reset"></i> Reset</button>
+                        </div>
+                        <div class="float-right">
+                            <button type="button" class="btn btn-lg btn-secondary btn-close" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-lg btn-primary btn-submit" disabled>OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery (required) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.validate.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Include the custom JS -->
+    <script src="assets/js/custom.js"></script>
+
+    </body>
+</html>
