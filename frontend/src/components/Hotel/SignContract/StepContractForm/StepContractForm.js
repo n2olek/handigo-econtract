@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StepContractFormStyle } from './styled';
 import { toast } from 'react-toastify';
+import { Icon } from 'components';
 
 export default class StepContractForm extends Component {
   state = {
@@ -70,7 +71,7 @@ export default class StepContractForm extends Component {
 
   };
   validateField = (e) => {
-    const formValidate = <div>require<span className="needs-validation">&#8226;</span></div>
+    const formValidate = <div className="invalid-feedback">Require</div>
     const {
       hotel_name: { length: hotel_name_length },
       company_name: { length: company_name_length },
@@ -112,239 +113,242 @@ export default class StepContractForm extends Component {
     } = this.state
     return (
       <StepContractFormStyle>
-        <div className="row">
-          <div className="col">
-            <div className="content bg-white rounded mt-5 mb-5 p-5">
-              <div className="header-title text-left mt-3 mb-4 offset-md-2 mb-8">
-                <h4 className="text-dark">
-                  Fill In Your Information
-								</h4>
-                <p>Please fill in every require fields.</p>
+        <div className="content bg-white">
+          <div className="header-title text-left offset-lg-2">
+            <h4>
+              Fill In Your Information
+            </h4>
+            <p>Please fill in every require fields.</p>
+          </div>
+
+          <form id="contactForm" ref={this.onRef}>
+            <div className="form-group row">
+              <label
+                htmlFor="hotelName"
+                className="col-lg-4 offset-lg-1 col-form-label"
+              >
+                Hotel Name
+              </label>
+              <div className="col-lg-5">
+                <input
+                  type="text"
+                  className="form-control form-control-xl"
+                  name="hotelName"
+                  id="hotelName"
+                  placeholder="Insert hotel name"
+                />
+                <span className="needs-validation">&#8226;</span>
+                {
+                  hotel_name_require
+                  // add className "is-invalid" to input above for displat highlight
+                  // <div className="invalid-feedback">
+                  // Require fields
+                  // </div>
+                }
               </div>
+            </div>
+            <div className="form-group row">
+              <label
+                htmlFor="companyName"
+                className="col-lg-4 offset-lg-1 col-form-label"
+              >
+                Company Name
+              </label>
+              <div className="col-lg-5">
+                <input
+                  type="text"
+                  className="form-control form-control-xl"
+                  id="companyName"
+                  placeholder="Insert company name"
+                />
+                <span className="needs-validation">&#8226;</span>
+                {
+                  company_name_require
+                }
+              </div>
+            </div>
+            <div className="form-group row">
+              <label
+                htmlFor="companyAddress"
+                className="col-lg-4 offset-lg-1 col-form-label"
+              >
+                Company Address
+              </label>
+              <div className="col-lg-5">
+                <textarea
+                  className="form-control"
+                  id="companyAddress"
+                  rows="3"
+                  placeholder="Insert company address"
+                />
+                <span className="needs-validation">&#8226;</span>
+                {
+                  company_address_require
+                }
+              </div>
+            </div>
 
-              <form id="contactForm" ref={this.onRef}>
-                <div className="form-group row">
-                  <label
-                    htmlFor="hotelName"
-                    className="col-lg-4 offset-lg-1 col-form-label"
-                  >
-                    Hotel Name
-									</label>
-                  <div className="col-lg-5">
-                    <input
-                      type="text"
-                      className="form-control form-control-xl"
-                      name="hotelName"
-                      id="hotelName"
-                      placeholder="Insert hotel name"
-                    />
-                    {
-                      hotel_name_require
-                      // add className "is-invalid" to input above for displat highlight
-                      // <div className="invalid-feedback">
-                      // Require fields
-                      // </div>
-                    }
-                  </div>
-                </div>
-                <div className="form-group row">
-                  <label
-                    htmlFor="companyName"
-                    className="col-lg-4 offset-lg-1 col-form-label"
-                  >
-                    Company Name
-									</label>
-                  <div className="col-lg-5">
-                    <input
-                      type="text"
-                      className="form-control form-control-xl"
-                      id="companyName"
-                      placeholder="Insert company name"
-                    />
-                    {
-                      company_name_require
-                    }
-                  </div>
-                </div>
-                <div className="form-group row">
-                  <label
-                    htmlFor="companyAddress"
-                    className="col-lg-4 offset-lg-1 col-form-label"
-                  >
-                    Company Address
-									</label>
-                  <div className="col-lg-5">
-                    <textarea
-                      className="form-control"
-                      id="companyAddress"
-                      rows="3"
-                      placeholder="Insert company address"
-                    />
-                    {
-                      company_address_require
-                    }
-                  </div>
-                </div>
+            <div className="form-group row mb-4" />
 
-                <div className="form-group row mb-4" />
-
-                <div className="form-group row">
-                  <label
-                    htmlFor="nameofauthorized"
-                    className="col-lg-4 offset-lg-1 col-form-label"
-                  >
-                    Name of Authorized Person
-									</label>
-                  <div className="col-lg-5">
+            <div className="form-group row">
+              <label
+                htmlFor="nameofauthorized"
+                className="col-lg-4 offset-lg-1 col-form-label"
+              >
+                Name of Authorized Person
+              </label>
+              <div className="col-lg-5">
+                <input
+                  type="text"
+                  className="form-control form-control-xl"
+                  id="nameofauthorized"
+                  placeholder="Insert name of authorized person"
+                />
+                <span className="needs-validation">&#8226;</span>
+                {
+                  auth_name_require
+                }
+              </div>
+            </div>
+            <div className="form-group row">
+              <label
+                htmlFor="positionofauthorized"
+                className="col-lg-4 offset-lg-1 col-form-label"
+              >
+                Position of Authorized Person
+              </label>
+              <div className="col-lg-5">
+                <input
+                  type="text"
+                  className="form-control form-control-xl"
+                  id="positionofauthorized"
+                  placeholder="Insert position of authorized person"
+                />
+                <span className="needs-validation">&#8226;</span>
+                {
+                  auth_position_require
+                }
+              </div>
+            </div>
+            <div className="form-group row">
+              <label
+                htmlFor="nameofwitness"
+                className="col-lg-4 offset-lg-1 col-form-label"
+              >
+                Name of Witness
+              </label>
+              <div className="col-lg-5">
+                <input
+                  type="text"
+                  className="form-control form-control-xl"
+                  id="nameofwitness"
+                  placeholder="Insert name of witness"
+                />
+                <span className="needs-validation">&#8226;</span>
+                {
+                  wit_name_require
+                }
+              </div>
+            </div>
+            <div className="form-group row">
+              <label
+                htmlFor="positionofwitness"
+                className="col-lg-4 offset-lg-1 col-form-label"
+              >
+                Position of Witness
+              </label>
+              <div className="col-lg-5">
+                <input
+                  type="text"
+                  className="form-control form-control-xl"
+                  id="positionofwitness"
+                  placeholder="Insert position of witness"
+                />
+                <span className="needs-validation">&#8226;</span>
+                {
+                  wit_position_require
+                }
+              </div>
+            </div>
+            <div className="form-group row mb-4" />
+            <div className="form-group row">
+              <label
+                htmlFor="nameofauthorized"
+                className="col-lg-4 offset-lg-1 col-form-label"
+              >
+                Upload File
+              </label>
+              <div className="col-lg-5">
+                <div
+                  id="mulitplefileuploader"
+                  className="mulitplefileuploader"
+                >
+                  <div className="btn btn-tertiary btn-xs btn-file mb-3">
+                    <span>Browse file</span>
                     <input
-                      type="text"
-                      className="form-control form-control-xl"
-                      id="nameofauthorized"
-                      placeholder="Insert name of authorized person"
+                      id="input-b5"
+                      name="input-b5[]"
+                      type="file"
+                      multiple
                     />
-                    {
-                      auth_name_require
-                    }
                   </div>
-                </div>
-                <div className="form-group row">
-                  <label
-                    htmlFor="positionofauthorized"
-                    className="col-lg-4 offset-lg-1 col-form-label"
-                  >
-                    Position of Authorized Person
-									</label>
-                  <div className="col-lg-5">
-                    <input
-                      type="text"
-                      className="form-control form-control-xl"
-                      id="positionofauthorized"
-                      placeholder="Insert position of authorized person"
-                    />
-                    {
-                      auth_position_require
-                    }
-                  </div>
-                </div>
-                <div className="form-group row">
-                  <label
-                    htmlFor="nameofwitness"
-                    className="col-lg-4 offset-lg-1 col-form-label"
-                  >
-                    Name of Witness
-									</label>
-                  <div className="col-lg-5">
-                    <input
-                      type="text"
-                      className="form-control form-control-xl"
-                      id="nameofwitness"
-                      placeholder="Insert name of witness"
-                    />
-                    {
-                      wit_name_require
-                    }
-                  </div>
-                </div>
-                <div className="form-group row">
-                  <label
-                    htmlFor="positionofwitness"
-                    className="col-lg-4 offset-lg-1 col-form-label"
-                  >
-                    Position of Witness
-									</label>
-                  <div className="col-lg-5">
-                    <input
-                      type="text"
-                      className="form-control form-control-xl"
-                      id="positionofwitness"
-                      placeholder="Insert position of witness"
-                    />
-                    {
-                      wit_position_require
-                    }
-                  </div>
-                </div>
-                <div className="form-group row mb-4" />
-                <div className="form-group row">
-                  <label
-                    htmlFor="nameofauthorized"
-                    className="col-lg-4 offset-lg-1 col-form-label"
-                  >
-                    Upload File
-									</label>
-                  <div className="col-lg-5">
-                    <div
-                      id="mulitplefileuploader"
-                      className="mulitplefileuploader"
-                    >
-                      <div className="btn btn-tertiary btn-xs btn-file mb-3">
-                        <span>Browse file</span>
-                        <input
-                          id="input-b5"
-                          name="input-b5[]"
-                          type="file"
-                          multiple
-                        />
-                      </div>
-                      <div className="file-upload-container">
-                        <div className="file-upload-statusbar rounded mb-3">
-                          <i className="handigo-icon handigo-icon-attached" />
-                          <span>
-                            Authorized_person_id.jpg
-													</span>
-                          <button
-                            type="button"
-                            className="close rounded-circle"
-                            aria-label="Close"
-                          >
-                            <i className="handigo-icon handigo-icon-close" />
-                          </button>
-                        </div>
-                        <div className="file-upload-statusbar rounded mb-3">
-                          <i className="handigo-icon handigo-icon-attached" />
-                          <span>
-                            Authorized_person_id_new.jpg
-													</span>
-                          <button
-                            type="button"
-                            className="close rounded-circle"
-                            aria-label="Close"
-                          >
-                            <i className="handigo-icon handigo-icon-close" />
-                          </button>
-                        </div>
-                      </div>
+                  <div className="file-upload-container">
+                    <div className="file-upload-statusbar rounded mb-3">
+                      <Icon name='attached' />
+                      <span>
+                        Authorized_person_id.jpg
+                      </span>
+                      <button
+                        type="button"
+                        className="close rounded-circle"
+                        aria-label="Close"
+                      >
+                        <Icon name='close'/>
+                      </button>
+                    </div>
+                    <div className="file-upload-statusbar rounded mb-3">
+                      <Icon name='attached' />
+                      <span>
+                        Authorized_person_id_new.jpg
+                      </span>
+                      <button
+                        type="button"
+                        className="close rounded-circle"
+                        aria-label="Close"
+                      >
+                        <Icon name='close' />
+                      </button>
                     </div>
                   </div>
                 </div>
-                <hr className="mt-15 mb-4" />
-                <div className="button-continue float-right mt-2">
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-back"
-                    onClick={this.onBackClick}
-                  >
-                    Back
-									</button>
-                  <button
-                    type="button"
-                    className="btn btn-tertiary btn-draft"
-                    onClick={this.onSaveDraftClick}
-                  >
-                    Save Draft
-									</button>
-                  <button
-                    className="btn btn-primary btn-continue"
-                    type="button"
-                    onClick={this.onSaveContinueClick}
-                  >
-                    Save &#38; Continue
-									</button>
-                </div>
-                <div className="clearfix" />
-              </form>
+              </div>
             </div>
-          </div>
+            <hr/>
+            <div className="buttons-frontend float-right">
+              <button
+                type="button"
+                className="btn btn-secondary btn-back"
+                onClick={this.onBackClick}
+              >
+                Back
+              </button>
+              <button
+                type="button"
+                className="btn btn-tertiary btn-draft"
+                onClick={this.onSaveDraftClick}
+              >
+                Save Draft
+              </button>
+              <button
+                className="btn btn-primary btn-continue"
+                type="button"
+                onClick={this.onSaveContinueClick}
+              >
+                Save &#38; Continue
+              </button>
+            </div>
+            <div className="clearfix" />
+          </form>
         </div>
         {
           // <div class="alert-wrapper position-absolute">

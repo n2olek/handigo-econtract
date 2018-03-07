@@ -45,6 +45,22 @@ export const IconsHandico = styled.i`
         margin-right: 20px;
       }
     }
+
+    &-close {
+      &:before {
+        content: url(${Icons['icon-close.svg']});
+        width: 10px;
+        margin: auto;
+      }
+    }
+
+    &-attached {
+        &:before {
+            content: url(${Icons['icon-attached.svg']});
+            width: 14px;
+            height: 14px;
+        }
+    }
   }
 
 	/* Child element styles

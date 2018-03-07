@@ -28,7 +28,8 @@ class HotelSignContractContainer extends React.Component {
     if (contract.status === 200) {
       this.setState({
         contract: contract.contract,
-        currentStep: contract.contract.status === 4 ? contract.contract.status : 1
+        // currentStep: contract.contract.status === 4 ? contract.contract.status : 1
+        currentStep: 2
         // currentStep: contract.contract.status
       });
     }

@@ -37,6 +37,12 @@ export const StepSelectLanguageStyle = styled.div`
 
 	/* Media queries
     ------------------------------- */
+  @media screen and (min-width: ${SCREENS.TABLETLGMAX} ) {
+    .btn-lang {
+      min-width: 256px;
+    }
+  }
+
   @media screen and (max-width: ${SCREENS.TABLETLGMAX}) {
     .content {
       padding: 55px 60px 55px;

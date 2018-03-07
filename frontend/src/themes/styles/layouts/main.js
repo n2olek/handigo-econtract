@@ -6,7 +6,8 @@ import {
 
   COLORS,
   FONTSIZES,
-  SCREENS
+  SCREENS,
+  FONTFAMILIES
 } from '../bases/variables'
 import { textBodyPrimaryXs } from '../bases/typographys'
 import {
@@ -36,9 +37,20 @@ injectGlobal`
   /* Test html tag selector
 
   ============================================================ */
+  @-webkit-keyframes autofill {
+    to {
+      background: transparent;
+      color: ${COLORS.GRAY6};
+    }
+  }
+
+  input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+  }
 
   body {
-    font-family: 'GothamRounded Bold';
+    font-family: ${FONTFAMILIES.PRIMARYGOTHAMROUNDED};
     color: ${COLORS.GRAY7};
     background-color: ${COLORS.GRAY};
   }
@@ -121,6 +133,7 @@ injectGlobal`
 
   &-tertiary {
     color: ${COLORS.WHITE};
+    background: ${COLORS.ORANGE1};
   }
 
   &-lang {
@@ -145,7 +158,7 @@ injectGlobal`
 
   &-file {
     position: relative;
-    font-size: $font-size-sm;
+    font-size: ${FONTSIZES.PRIMARYBODYSM};
 
     input[type=file] {
       top: 0;
@@ -239,20 +252,20 @@ injectGlobal`
 
 .file-upload {
   &-statusbar {
-    color: $gray-700;
-    font-size: $font-size-xs;
-    font-family: $font-family-monospace;
+    color: ${COLORS.GRAY9};
+    font-size: ${FONTSIZES.PRIMARYBODYXS};
+    font-family: ${FONTFAMILIES.SECONDARYOPENSANS};
     padding: 11px 15px;
-    background-color: $gray-111;
+    background-color: ${COLORS.GRAY2};
 
     .close {
       width: 20px;
       height: 20px;
-      background-color: $gray-600;
+      background-color: ${COLORS.GRAY7};
       line-height: 0.5;
       font-size: 14px;
       text-shadow: none;
-      color: $white;
+      color: ${COLORS.WHITE};
     }
   }
 }
@@ -293,21 +306,15 @@ injectGlobal`
 }
 
 @media screen and (max-width: ${SCREENS.DESKTOPXS}) {
-  .button-continue {
+  .buttons-frontend {
     .btn {
-      min-width: 200px;
+      /* min-width: 200px; */
       min-height: 50px;
     }
   }
 }
 
-@media screen and (max-width: ${SCREENS.DESKTOPLG}) {
-  .button-continue {
-    .btn {
-      min-width: 256px;
-    }
-  }
-}
+
 
   /* Test no effect global to local style
   ============================================================ */
