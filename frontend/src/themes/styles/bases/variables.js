@@ -168,6 +168,7 @@ const SCREENS = {
   TABLETXS: '768px',
   TABLETSM: '800px',
   TABLETMD: '812px',
+  TABLETMMD: '992px',
   TABLETLG: '1024px',
   TABLETXSMAX: '799px',
   TABLETSMMAX: '811px',

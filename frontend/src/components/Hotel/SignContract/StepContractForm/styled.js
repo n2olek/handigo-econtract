@@ -71,6 +71,16 @@ export const StepContractFormStyle = styled.div`
       color: ${COLORS.ORANGE1};
   }
 
+  .is-invalid {
+    border-color: ${COLORS.ORANGE1};
+
+    &:focus {
+      border-color: ${COLORS.ORANGE1};
+      box-shadow: none;
+
+    }
+  }
+
   .alert-wrapper {
       right: 0;
       top: 60%;
@@ -110,7 +120,7 @@ export const StepContractFormStyle = styled.div`
     }
   }
 
-  @media screen and (min-width: ${SCREENS.TABLETLG}) {
+  @media screen and (min-width: ${SCREENS.TABLETMMD}) {
     .form-group.row > .col-form-label {
       text-align: right;
       padding-right: 40px;
@@ -123,10 +133,9 @@ export const StepContractFormStyle = styled.div`
     }
 
     .invalid-feedback {
-      position: relative;
-      top: -30px;
-      right: -58px;
-      text-align: right;
+      position: absolute;
+      top: 5px;
+      left: 495px;
     }
   }
 

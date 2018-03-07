@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StepContractFormStyle } from './styled';
 import { toast } from 'react-toastify';
 import { Icon } from 'components';
+import ClassNames from 'classnames'
 
 export default class StepContractForm extends Component {
   state = {
@@ -120,7 +121,6 @@ export default class StepContractForm extends Component {
             </h4>
             <p>Please fill in every require fields.</p>
           </div>
-
           <form id="contactForm" ref={this.onRef}>
             <div className="form-group row">
               <label
@@ -132,7 +132,15 @@ export default class StepContractForm extends Component {
               <div className="col-lg-5">
                 <input
                   type="text"
-                  className="form-control form-control-xl"
+                  className={
+                    ClassNames(
+                      "form-control", 
+                      "form- control-xl", 
+                      {
+                        'is-invalid': hotel_name_require
+                      }
+                    )
+                  }
                   name="hotelName"
                   id="hotelName"
                   placeholder="Insert hotel name"
@@ -140,10 +148,6 @@ export default class StepContractForm extends Component {
                 <span className="needs-validation">&#8226;</span>
                 {
                   hotel_name_require
-                  // add className "is-invalid" to input above for displat highlight
-                  // <div className="invalid-feedback">
-                  // Require fields
-                  // </div>
                 }
               </div>
             </div>
@@ -157,7 +161,15 @@ export default class StepContractForm extends Component {
               <div className="col-lg-5">
                 <input
                   type="text"
-                  className="form-control form-control-xl"
+                   className={
+                    ClassNames(
+                      "form-control", 
+                      "form-control-xl", 
+                      {
+                        'is-invalid': company_name_require
+                      }
+                    )
+                  }
                   id="companyName"
                   placeholder="Insert company name"
                 />
@@ -176,7 +188,14 @@ export default class StepContractForm extends Component {
               </label>
               <div className="col-lg-5">
                 <textarea
-                  className="form-control"
+                  className={
+                    ClassNames(
+                      "form-control",
+                      {
+                        'is-invalid': company_address_require
+                      }
+                    )
+                  }
                   id="companyAddress"
                   rows="3"
                   placeholder="Insert company address"
@@ -200,7 +219,15 @@ export default class StepContractForm extends Component {
               <div className="col-lg-5">
                 <input
                   type="text"
-                  className="form-control form-control-xl"
+                  className={
+                    ClassNames(
+                      "form-control",
+                      "form-control-xl",
+                      {
+                        'is-invalid': auth_name_require
+                      }
+                    )
+                  }
                   id="nameofauthorized"
                   placeholder="Insert name of authorized person"
                 />
@@ -220,7 +247,15 @@ export default class StepContractForm extends Component {
               <div className="col-lg-5">
                 <input
                   type="text"
-                  className="form-control form-control-xl"
+                  className={
+                    ClassNames(
+                      "form-control",
+                      "form-control-xl",
+                      {
+                        'is-invalid': auth_position_require
+                      }
+                    )
+                  }
                   id="positionofauthorized"
                   placeholder="Insert position of authorized person"
                 />
@@ -240,7 +275,15 @@ export default class StepContractForm extends Component {
               <div className="col-lg-5">
                 <input
                   type="text"
-                  className="form-control form-control-xl"
+                  className={
+                    ClassNames(
+                      "form-control",
+                      "form-control-xl",
+                      {
+                        'is-invalid': wit_name_require
+                      }
+                    )
+                  }
                   id="nameofwitness"
                   placeholder="Insert name of witness"
                 />
@@ -260,7 +303,15 @@ export default class StepContractForm extends Component {
               <div className="col-lg-5">
                 <input
                   type="text"
-                  className="form-control form-control-xl"
+                  className={
+                    ClassNames(
+                      "form-control",
+                      "form-control-xl",
+                      {
+                        'is-invalid': wit_position_require
+                      }
+                    )
+                  }
                   id="positionofwitness"
                   placeholder="Insert position of witness"
                 />
@@ -303,7 +354,7 @@ export default class StepContractForm extends Component {
                         className="close rounded-circle"
                         aria-label="Close"
                       >
-                        <Icon name='close'/>
+                        <Icon name='close' />
                       </button>
                     </div>
                     <div className="file-upload-statusbar rounded mb-3">
@@ -323,7 +374,7 @@ export default class StepContractForm extends Component {
                 </div>
               </div>
             </div>
-            <hr/>
+            <hr />
             <div className="buttons-frontend float-right">
               <button
                 type="button"
