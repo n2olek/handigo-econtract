@@ -33,11 +33,9 @@ export default class ContractProgress extends Component {
     // 	progressStatus
     // });
   }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentStep !== this.state.currentStep)
       this.setState({ currentStep: nextProps.currentStep });
-
     if (nextProps.progressStatus !== this.state.progressStatus)
       this.setState({ progressStatus: Math.min(nextProps.progressStatus, 4) });
   }
@@ -45,14 +43,14 @@ export default class ContractProgress extends Component {
   onClickProgress = step => {
     const { onClickProgress } = this.props;
     const { progressStatus } = this.state;
-
     if (progressStatus === 4) return false;
-
     if (typeof onClickProgress === 'function') onClickProgress(step);
   };
-
   getHeaderText = () => {
-    const { currentStep, buttonList } = this.state;
+    const { 
+      currentStep, 
+      buttonList 
+    } = this.state;
     let button = buttonList[currentStep - 1];
     return button ? button.headerText : '';
   };
@@ -89,7 +87,6 @@ export default class ContractProgress extends Component {
                 })
               }
             </ul>
-
             {/* <div className="stepwizard">
 							<div className="stepwizard-row setup-panel">
 								{buttonList.map((button, index) => {

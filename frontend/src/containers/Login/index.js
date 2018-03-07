@@ -2,7 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FormLogin } from 'components';
 import { setReduxUserAuth } from 'actions';
-import { ROUTE_PATH, redirect, setLocalstorage, getLocalstorage, checkUserLoginSession } from 'helpers';
+import {
+  ROUTE_PATH,
+  redirect,
+  setLocalstorage,
+  getLocalstorage,
+  checkUserLoginSession
+} from 'helpers';
 import { userService } from 'apiService';
 import { toast } from 'react-toastify';
 
@@ -31,7 +37,6 @@ class LoginContainer extends React.Component {
 
     if (user.role_id && checkUserLoginSession(user)) this.setUser(user);
   };
-
   setUser = user => {
     this.props.setReduxUserAuth(user);
     setLocalstorage('user', user);
@@ -42,10 +47,8 @@ class LoginContainer extends React.Component {
     switch (roleId) {
       case 2: // admin(sale)
         return redirect(ROUTE_PATH.ADMIN_CONTRACT_LIST);
-
       case 3: // hotel
         return redirect(ROUTE_PATH.HOTEL_SIGN_CONTRACT);
-
       case 1: // superadmin
       default:
         break;
@@ -56,9 +59,7 @@ class LoginContainer extends React.Component {
     return (
       <div className="container-fluid bg-white">
         <div className="row">
-          <div className="col-xl-6 bg-signin">
-
-          </div>
+          <div className="col-xl-6 bg-signin"/>
           <div className="col-xl-6">
             <div className="form-signin-wrapper">
               <FormLogin onClickSubmitForm={this.login.onClickSubmitForm} />
@@ -74,7 +75,6 @@ class LoginContainer extends React.Component {
 const mapStateToProps = state => ({
   user: state.user
 });
-
 const mapDispatchToProps = dispatch => ({
   setReduxUserAuth: data => dispatch(setReduxUserAuth(data))
 });

@@ -23,12 +23,13 @@ class RouteContainer extends React.Component {
   };
 
   componentWillMount() {
-    const { history, setReduxThisRoute } = this.props;
+    const { 
+      history, 
+      setReduxThisRoute 
+    } = this.props;
     setReduxThisRoute(history);
-
     this.checkUser();
   }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.role_id !== this.props.user.role_id)
       this.checkUser(nextProps.user);
@@ -39,7 +40,6 @@ class RouteContainer extends React.Component {
       user = this.props.user;
       if (!user || !user.role_id) user = getLocalstorage("user") || {};
     }
-
     if (user.role_id && checkUserLoginSession(user)) {
       this.props.setReduxUserAuth(user);
       setLocalstorage("user", user);
@@ -49,7 +49,6 @@ class RouteContainer extends React.Component {
       logout();
     }
   };
-
   renderByRole = role => {
     switch (role) {
       case 1:
@@ -76,10 +75,8 @@ class RouteContainer extends React.Component {
 const mapStateToProps = state => ({
   user: state.user
 });
-
 const mapDispatchToProps = dispatch => ({
   setReduxThisRoute: data => dispatch(setReduxThisRoute(data)),
   setReduxUserAuth: data => dispatch(setReduxUserAuth(data))
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(RouteContainer);

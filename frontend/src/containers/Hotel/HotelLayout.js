@@ -10,7 +10,6 @@ class HotelLayoutContainer extends React.Component {
 		return (
 			<div className="app-container">
 				<AppHeader />
-
 				<Route exact path={ROUTE_PATH.HOTEL_SIGN_CONTRACT} component={HotelSignContractContainer} />
 			</div>
 		);
