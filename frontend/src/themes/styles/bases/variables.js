@@ -243,7 +243,9 @@ const borderRadiuses = {
 
 const BORDERRADIUSES = {
   XS: '3px',
-  SM: '5px'
+  SM: '5px',
+  XL: '8px',
+  XXL: '10px'
 }
 
 

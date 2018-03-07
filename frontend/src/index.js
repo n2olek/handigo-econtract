@@ -7,8 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 // import 'themes/styles/bases/scaffolding';
 import 'themes/styles/layouts/main';
 
-
-
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {
-  SCREENS
+  SCREENS,
+  BORDERRADIUSES
 } from 'themes/styles/bases/variables'
 
 // Modifier (props)
@@ -14,6 +15,7 @@ export const StepSelectLanguageStyle = styled.div`
 
   .content {
     padding: 80px 170px 58px;
+    border-radius: ${BORDERRADIUSES.XXL}
   }
 
   hr {
