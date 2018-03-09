@@ -27,6 +27,7 @@ const COLORS = {
 
   //Primary
   BLUE: '#0AACCC',
+  BLUE1: '#0B99B5',
 
   ORANGE1: '#FF8425',
   ORANGE2: '#F5881F',
@@ -35,6 +36,7 @@ const COLORS = {
 
   GREEN1: '#0ACC28',
   GREEN2: '#09842F',
+  GREEN3: 'rgba(10, 204, 40, .3)',
 
   WHITE1: 'rgba(255, 255, 255, .4)',
 
@@ -155,6 +157,7 @@ const SCREENS = {
   MOBILESMMAX: '374px',
   MOBILEMDMAX: '413px',
   MOBILELGMAX: '479px',
+  MOBILELLGMAX: '576px',
 
   PHABLETXS: '480px',
   PHABLETSM: '640px',

@@ -20,9 +20,10 @@ class LoginContainer extends React.Component {
         let user = res.user;
         this.setUser(user);
       } else {
-        toast.error('Invalid username or password', {
-          position: toast.POSITION.TOP_RIGHT
-        });
+        toast.error(
+          'Invalid username or password',
+          { position: toast.POSITION.TOP_RIGHT }
+        );
       }
     }
   };
@@ -59,7 +60,7 @@ class LoginContainer extends React.Component {
     return (
       <div className="container-fluid bg-white">
         <div className="row">
-          <div className="col-xl-6 bg-signin"/>
+          <div className="col-xl-6 bg-signin" />
           <div className="col-xl-6">
             <div className="form-signin-wrapper">
               <FormLogin onClickSubmitForm={this.login.onClickSubmitForm} />

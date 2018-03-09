@@ -73,13 +73,6 @@ func update(con Contract) (Result, Contract) {
 
 	/**
 	  -
-		- keep is_active flag
-		-
-	**/
-	con.IsActive = true
-
-	/**
-	  -
 		- marshal json for preparation validate update dynamic fields
 		-
 	**/
@@ -100,24 +93,51 @@ func update(con Contract) (Result, Contract) {
 
 	/**
 	  -
-		- no need _id for update map
+		- no need for update map
 		-
 	**/
 	delete(mapContract, "_id")
 	delete(mapContract, "hotel_id")
+	delete(mapContract, "create_date")
 
 	/**
 	  -
 		- filter out empty map object
 		-
 	**/
-	for key := range mapContract {
-		if mapContract[key] == "" {
-			delete(mapContract, key)
-		}
+	// for key := range mapContract {
+	// 	if mapContract[key] == "" {
+	// 		delete(mapContract, key)
+	// 	}
+	// }
+
+	/**
+	  -
+		- get old contract data in database
+		-
+	**/
+	oldCon := Contract{}
+	err := colContract.Find(bson.M{"_id": con.Id}).One(&oldCon)
+	if err != nil {
+		return Result{http.StatusBadRequest, err.Error()}, Contract{}
 	}
 
-	err := colContract.Update(bson.M{"_id": con.Id}, bson.M{"$set": mapContract})
+	/**
+	  -
+		- check field with child parameter
+		-
+	**/
+
+	if _, ok := mapContract["doc"].(map[string]interface{})["file_id"]; !ok {
+		delete(mapContract, "doc")
+	}
+
+	checkPersonObject(mapContract, "hotel_authorized_person")
+	checkPersonObject(mapContract, "hotel_witness")
+	checkPersonObject(mapContract, "handigo_authorized_person")
+	checkPersonObject(mapContract, "handigo_witness")
+
+	err = colContract.Update(bson.M{"_id": con.Id}, bson.M{"$set": mapContract})
 	if err != nil {
 		return Result{http.StatusBadRequest, err.Error()}, Contract{}
 	}
@@ -128,7 +148,22 @@ func update(con Contract) (Result, Contract) {
 		return Result{http.StatusBadRequest, err.Error()}, Contract{}
 	}
 
-	return Result{http.StatusOK, "complete"}, con
+	return Result{http.StatusOK, "complete"}, data
+}
+
+func checkPersonObject(mapContract map[string]interface{}, name string) {
+	if val, ok := mapContract[name]; ok {
+		if val2, ok2 := val.(map[string]interface{})["name"]; ok2 {
+			mapContract[name+".name"] = val2
+		}
+		if val2, ok2 := val.(map[string]interface{})["position"]; ok2 {
+			mapContract[name+".position"] = val2
+		}
+		if val2, ok2 := val.(map[string]interface{})["signature"]; ok2 {
+			mapContract[name+".signature"] = val2
+		}
+		delete(mapContract, name)
+	}
 }
 
 func remove(con Contract) (Result, Contract) {

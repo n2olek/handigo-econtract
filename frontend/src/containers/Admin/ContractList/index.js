@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ContractListStyle from './style';
-import { SearchBoxComponent, AdminContractListComponent, PaginationComponent } from 'components';
+import {
+  SearchBoxComponent,
+  AdminContractListComponent,
+  PaginationComponent
+} from 'components';
 // import { ROUTE_PATH, redirect } from 'helpers';
 import { contractService } from 'apiService';
 
@@ -94,7 +98,6 @@ class AdminContractListContainer extends React.Component {
 const mapStateToProps = state => ({
   user: state.user
 });
-
 const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminContractListContainer);

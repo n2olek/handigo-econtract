@@ -12,6 +12,8 @@ var TempleteEmail = map[string]string{
 // var DatabaseUsername = "username"
 // var DatabasePassword = "pass"
 
-var ContractFileUploadLocationPath = "/storage/upload/contract_attachment/"
+var StoragePath = "/storage/"
 
-// var ContractFileUploadLocationPath = "C:/Users/Pat/Desktop/upload_example/"
+// var StoragePath = "C:/Users/Pat/Desktop/"
+
+var ContractAttachmentUploadPath = StoragePath + "upload/contract_attachment/"

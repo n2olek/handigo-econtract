@@ -55,10 +55,51 @@ export const IconsHandico = styled.i`
     }
 
     &-attached {
+      &:before {
+        content: url(${Icons['icon-attached.svg']});
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    &-signature {
+      &:before {
+        content: url(${Icons['icon-signature.svg']});
+        width: 38px;
+        margin-right: 0;
+        margin-top: 10px;
+      }
+    }
+
+    &-download {
+      &:before {
+        content: url(${Icons['icon-download.svg']});
+        width: 14px;
+      }
+    }
+
+    &-reset {
+      &:before {
+        content: url(${Icons['icon-reset.svg']});
+        width: 10px;
+      }
+    }
+
+    &-edit-signature {
         &:before {
-            content: url(${Icons['icon-attached.svg']});
-            width: 14px;
-            height: 14px;
+          content: url(${Icons['icon-edit-signature.svg']});
+          width: 18px;
+          margin-right: 0;
+          margin-top: 10px;
+        }
+    }
+
+    &-success {
+        &:before {
+          content: url(${Icons['icon-success.svg']});
+          width: 22px;
+          margin-right: 0;
+          /* margin-top: 10px; */
         }
     }
   }

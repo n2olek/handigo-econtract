@@ -2,22 +2,12 @@ package main
 
 import (
 	"./contract"
-	_ "./docs"
 	"./mail"
 	"./mongodb"
 	"./user"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	// "github.com/swaggo/gin-swagger"
-	// "github.com/swaggo/gin-swagger/swaggerFiles"
 )
-
-// @title Swagger Example API
-// @version 1.0
-// @description Swagger Example API
-
-// @host localhost:8765
-// @BasePath /econtract
 
 func main() {
 	mongodb.Init()
@@ -36,7 +26,6 @@ func main() {
 	// }))
 
 	router.Use(cors.Default())
-	// router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	router.PUT("/econtract/user/save", user.Save)
 	router.POST("/econtract/user/login", user.Login)
@@ -51,8 +40,9 @@ func main() {
 	router.DELETE("/econtract/contract/delete", contract.Del)
 	router.GET("/econtract/contract/getContractList", contract.GetContractList)
 
+	router.GET("/econtract/contract/attachment/:filename", contract.GetAttachment)
+
 	router.POST("/econtract/mail/send", mail.Send)
-	router.POST("/econtract/testUpload", contract.TestUpload)
 	// router.PUT("/somePut", putting)
 	// router.DELETE("/someDelete", deleting)
 

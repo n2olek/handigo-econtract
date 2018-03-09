@@ -8,25 +8,26 @@ import (
 
 type Contract struct {
 	Id           bson.ObjectId `form:"_id" json:"_id" bson:"_id,omitempty"`
-	UserId       bson.ObjectId `form:"user_id" json:"user_id" bson:"user_id"`
-	SaleId       string        `form:"sale_id" json:"sale_id" bson:"sale_id"`
-	Language     string        `form:"language" json:"language" bson:"language"`
-	EmailContact string        `form:"email_contact" json:"email_contact" bson:"email_contact"`
-	Status       int           `form:"status" json:"status" bson:"status"`
-	CreateDate   int64         `form:"create_date" json:"create_date" bson:"create_date"`
-	UpdateDate   int64         `form:"update_date" json:"update_date" bson:"update_date"`
-	DeleteDate   int64         `form:"delete_date" json:"delete_date" bson:"delete_date"`
-	IsActive     bool          `form:"is_active" json:"is_active" bson:"is_active"`
+	UserId       bson.ObjectId `form:"user_id,omitempty" json:"user_id,omitempty" bson:"user_id"`
+	SaleId       string        `form:"sale_id,omitempty" json:"sale_id,omitempty" bson:"sale_id"`
+	Language     string        `form:"language,omitempty" json:"language,omitempty" bson:"language"`
+	EmailContact string        `form:"email_contact,omitempty" json:"email_contact,omitempty" bson:"email_contact"`
+	Status       int           `form:"status,omitempty" json:"status,omitempty" bson:"status"`
+	CreateDate   int64         `form:"create_date,omitempty" json:"create_date,omitempty" bson:"create_date"`
+	UpdateDate   int64         `form:"update_date,omitempty" json:"update_date,omitempty" bson:"update_date"`
+	DeleteDate   int64         `form:"delete_date,omitempty" json:"delete_date,omitempty" bson:"delete_date"`
+	IsActive     bool          `form:"is_active,omitempty" json:"is_active,omitempty" bson:"is_active"`
+	Attachment   []Attachment  `form:"attachment,omitempty" json:"attachment,omitempty" bson:"attachment"`
 
-	Doc                     Doc    `form:"doc" json:"doc" bson:"doc"`
-	HotelName               string `form:"hotel_name" json:"hotel_name" bson:"hotel_name"`
-	CompanyName             string `form:"company_name" json:"company_name" bson:"company_name"`
-	CompanyAddress          string `form:"company_address" json:"company_address" bson:"company_address"`
-	ContractDate            string `form:"contract_date" json:"contract_date" bson:"contract_date"`
-	HotelAuthorizedPerson   Person `form:"hotel_authorized_person" json:"hotel_authorized_person" bson:"hotel_authorized_person"`
-	HotelWitness            Person `form:"hotel_witness" json:"hotel_witness" bson:"hotel_witness"`
-	HandigoAuthorizedPerson Person `form:"handigo_authorized_person" json:"handigo_authorized_person" bson:"handigo_authorized_person"`
-	HandigoWitness          Person `form:"handigo_witness" json:"handigo_witness" bson:"handigo_witness"`
+	Doc                     Doc    `form:"doc,omitempty" json:"doc,omitempty" bson:"doc"`
+	HotelName               string `form:"hotel_name,omitempty" json:"hotel_name,omitempty" bson:"hotel_name"`
+	CompanyName             string `form:"company_name,omitempty" json:"company_name,omitempty" bson:"company_name"`
+	CompanyAddress          string `form:"company_address,omitempty" json:"company_address,omitempty" bson:"company_address"`
+	ContractDate            string `form:"contract_date,omitempty" json:"contract_date,omitempty" bson:"contract_date"`
+	HotelAuthorizedPerson   Person `form:"hotel_authorized_person,omitempty" json:"hotel_authorized_person,omitempty" bson:"hotel_authorized_person"`
+	HotelWitness            Person `form:"hotel_witness,omitempty" json:"hotel_witness,omitempty" bson:"hotel_witness"`
+	HandigoAuthorizedPerson Person `form:"handigo_authorized_person,omitempty" json:"handigo_authorized_person,omitempty" bson:"handigo_authorized_person"`
+	HandigoWitness          Person `form:"handigo_witness,omitempty" json:"handigo_witness,omitempty" bson:"handigo_witness"`
 }
 
 /*
@@ -42,13 +43,18 @@ Status
 */
 
 type Person struct {
-	Name      string `form:"name" json:"name" bson:"name"`
-	Position  string `form:"position" json:"position" bson:"position"`
-	Signature string `form:"signature" json:"signature" bson:"signature"`
+	Name      string `form:"name,omitempty" json:"name,omitempty" bson:"name"`
+	Position  string `form:"position,omitempty" json:"position,omitempty" bson:"position"`
+	Signature string `form:"signature,omitempty" json:"signature,omitempty" bson:"signature"`
 }
 
 type Doc struct {
-	FileId string `form:"file_id" json:"file_id" bson:"file_id"`
+	FileId string `form:"file_id,omitempty" json:"file_id,omitempty" bson:"file_id"`
+}
+
+type Attachment struct {
+	Filename string `form:"filename" json:"filename" bson:"filename"`
+	IsActive bool   `form:"is_active" json:"is_active" bson:"is_active"`
 }
 
 type Result struct {
@@ -107,4 +113,9 @@ func validateUpdate(con Contract) error {
 		return errors.New("_id is mandatory")
 	}
 	return nil
+}
+
+type UpdateLanguageRequest struct {
+	Id       string `form:"id" json:"id" bson:"id"`
+	Language string `form:"language" json:"language" bson:"language"`
 }

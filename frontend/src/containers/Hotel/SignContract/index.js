@@ -28,9 +28,7 @@ class HotelSignContractContainer extends React.Component {
     if (contract.status === 200) {
       this.setState({
         contract: contract.contract,
-        // currentStep: contract.contract.status === 4 ? contract.contract.status : 1
-        currentStep: 2
-        // currentStep: contract.contract.status
+        currentStep: contract.contract.status === 4 ? contract.contract.status : 1
       });
     }
   };
@@ -53,6 +51,11 @@ class HotelSignContractContainer extends React.Component {
   onSubmitSelectLanguage = async selectedLanguage => {
     const { contract } = this.state;
 
+    if (selectedLanguage === contract.language) {
+      this.setState({ currentStep: 2 });
+      return;
+    }
+
     let nextStatus = contract.status;
     if (contract.status < 2) nextStatus = 2;
 
@@ -68,17 +71,26 @@ class HotelSignContractContainer extends React.Component {
 
     let result = await contractService.UpdateContract(params);
 
-    console.log(result);
     if (result.status === 200) {
       this.setState({
-        currentStep: 2,
         contract: result.contract
+      }, () => {
+        let activeStep = 2;
+        if (!result.contract.doc.file_id) {
+          // doc is still not generated -> go to normal flow
+          this.setState({ currentStep: 0 }, () => {
+            this.setState({ currentStep: activeStep });
+          });
+        } else {
+          // doc is already generated but data has been change -> need to generate new doc
+          let contractStatus = result.contract.status;
+          this.generatePDF({}, contractStatus, activeStep);
+        }
       });
     }
   };
 
   onSubmitContractForm = async (formValue, fileUpload, isDraft) => {
-    console.log(formValue, fileUpload, isDraft);
     const { currentStep, contract } = this.state;
     let nextStatus = contract.status;
     if (!isDraft && contract.status < 3) nextStatus = 3;
@@ -90,21 +102,43 @@ class HotelSignContractContainer extends React.Component {
     };
 
     let params = {
-      data: JSON.stringify(data)
+      data: JSON.stringify(data),
+      "upload[]" : fileUpload,
     };
 
     let result = await contractService.UpdateContract(params);
 
-    console.log(result);
     if (result.status === 200) {
       this.setState({
-        currentStep: isDraft ? currentStep : nextStatus,
         contract: result.contract
+      }, () => {
+        let activeStep = isDraft ? currentStep : currentStep + 1;
+        if (!result.contract.doc.file_id) {
+          // doc is still not generated -> go to normal flow
+          this.setState({ currentStep: 0 }, () => {
+            this.setState({ currentStep: activeStep });
+          });
+        } else {
+          // doc is already generated but data has been change -> need to generate new doc
+          let contractStatus = result.contract.status;
+          this.generatePDF({}, contractStatus, activeStep);
+        }
       });
     }
   };
 
-  onSubmitSignContract = formValue => {
+  onSubmitSignContract = (formValue, isDraft) => {
+    const { contract } = this.state;
+
+    let contractStatus = contract.status;
+    if ((contractStatus < 4) && !isDraft) contractStatus = 4;
+
+    let activeStep = isDraft? 3 : 4;
+
+    this.generatePDF(formValue, contractStatus, activeStep);
+  };
+
+  generatePDF = (formValue, contractStatus, activeStep) => {
     const { user } = this.props;
     const { contract } = this.state;
 
@@ -131,52 +165,52 @@ class HotelSignContractContainer extends React.Component {
       // fileid_hotel_witness_signature: null,
     };
 
-    let imageString = 'data:image/png;base64';
-    if (formValue.authorizedPersonSignature) {
-      if (formValue.authorizedPersonSignature.indexOf(imageString) === 0) {
-        data.hotel_authorized_person_signature = formValue.authorizedPersonSignature.replace(/^.*,/, '');
-        data.filename_hotel_authorized_person_signature = 'hotel_authorized_person_signature';
-        data.imageformat_hotel_authorized_person_signature = 'PNG';
-      } else {
-        data.fileid_hotel_authorized_person_signature = formValue.authorizedPersonSignature;
-      }
-    }
-
-    if (formValue.witnessSignature) {
-      if (formValue.witnessSignature.indexOf(imageString) === 0) {
-        data.hotel_witness_signature = formValue.witnessSignature.replace(/^.*,/, '');
-        data.filename_hotel_witness_signature = 'hotel_witness_signature';
-        data.imageformat_hotel_witness_signature = 'PNG';
-      } else {
-        data.fileid_hotel_witness_signature = formValue.witnessSignature;
-      }
-    }
+    this.attachNewSignatureData(data, 'hotel_authorized_person', formValue.authorizedPersonSignature);
+    this.attachNewSignatureData(data, 'hotel_witness', formValue.witnessSignature);
 
     contractService.GeneratePDF(data).then(response => {
-      if (response.status === 200) this.updateContractFromPdf(response.data);
+      if (response.status === 200) this.updateContractFromPdf(response.data, contractStatus, activeStep);
     });
-  };
+  }
 
-  updateContractFromPdf = async pdfData => {
+  attachNewSignatureData = (params, fieldname, signatureData) => {
+    const { contract } = this.state;
+
+    if (!signatureData) {
+      if (contract[fieldname] && contract[fieldname].signature) {
+        params['fileid_' + fieldname + '_signature'] = contract[fieldname].signature;
+      }
+
+      return;
+    }
+
+    let imageString = 'data:image/png;base64';
+    if (signatureData.indexOf(imageString) === 0) {
+      params[fieldname + '_signature'] = signatureData.replace(/^.*,/, '');
+      params['filename_' + fieldname + '_signature'] = fieldname;
+      params['imageformat_' + fieldname + '_signature'] = 'PNG';
+    } else {
+      params['fileid_' + fieldname + '_signature'] = signatureData;
+    }
+  }
+
+  updateContractFromPdf = async (pdfData, contractStatus, activeStep) => {
     const { contract } = this.state;
 
     let data = {
       _id: contract._id,
       contract_date: pdfData.date,
       hotel_authorized_person: {
-        name: contract.hotel_authorized_person.name,
-        position: contract.hotel_authorized_person.position,
         signature: pdfData.hotel_authorized_person_signature_id
       },
       hotel_witness: {
-        name: contract.hotel_witness.name,
-        position: contract.hotel_witness.position,
         signature: pdfData.hotel_witness_signature_id
       },
       doc: {
         file_id: pdfData.pdf
       },
-      status: 4
+      attachment: contract.attachment,
+      status: contractStatus
     };
 
     let params = {
@@ -187,8 +221,10 @@ class HotelSignContractContainer extends React.Component {
 
     if (result.status === 200) {
       this.setState({
-        currentStep: 4,
+        currentStep: 0,
         contract: result.contract
+      }, () => {
+        this.setState({ currentStep: activeStep || contractStatus });
       });
     }
   };

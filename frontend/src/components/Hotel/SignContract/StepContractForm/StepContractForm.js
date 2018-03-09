@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { StepContractFormStyle } from './styled';
 import { toast } from 'react-toastify';
 import { Icon } from 'components';
+import { contractService } from 'apiService';
+import { getAttachmentFilename, cloneObject } from 'helpers';
 import ClassNames from 'classnames'
 
 export default class StepContractForm extends Component {
   state = {
-    key: 0
+    oldUploadFile: [],
+    newUploadFile: []
   };
 
   componentDidMount() {
@@ -17,19 +20,23 @@ export default class StepContractForm extends Component {
     this.contractForm = ref;
     console.log(this.contractForm);
   };
+
   setFormValue = () => {
     const { contract } = this.props;
     const form = this.contractForm;
-    form.hotelName.value = contract.hotel_name;
-    form.companyName.value = contract.company_name;
-    form.companyAddress.value = contract.company_address;
-    form.nameofauthorized.value = contract.hotel_authorized_person.name;
-    form.positionofauthorized.value = contract.hotel_authorized_person.position;
-    form.nameofwitness.value = contract.hotel_witness.name;
-    form.positionofwitness.value = contract.hotel_witness.position;
+    form.hotelName.value = contract.hotel_name ? contract.hotel_name : '';
+    form.companyName.value = contract.company_name ? contract.company_name : '';
+    form.companyAddress.value = contract.company_address ? contract.company_address : '';
+    form.nameofauthorized.value = contract.hotel_authorized_person.name ? contract.hotel_authorized_person.name : '';
+    form.positionofauthorized.value = contract.hotel_authorized_person.position ? contract.hotel_authorized_person.position : '';
+    form.nameofwitness.value = contract.hotel_witness.name ? contract.hotel_witness.name : '';
+    form.positionofwitness.value = contract.hotel_witness.position ? contract.hotel_witness.position : '';
+    this.setState({ oldUploadFile: contract.attachment? cloneObject(contract.attachment) : [] });
   };
+
   getFormValue = () => {
     const { contract } = this.props;
+    const { oldUploadFile } = this.state;
     const form = this.contractForm;
     let data = {
       hotel_name: form.hotelName.value,
@@ -38,39 +45,49 @@ export default class StepContractForm extends Component {
       hotel_authorized_person: {
         name: form.nameofauthorized.value,
         position: form.positionofauthorized.value,
-        signature_path: contract.hotel_authorized_person.signature_path
       },
       hotel_witness: {
         name: form.nameofwitness.value,
         position: form.positionofwitness.value,
-        signature_path: contract.hotel_witness.signature_path
-      }
+      },
+      attachment: oldUploadFile,
     };
     return data;
   };
+
   onBackClick = () => {
     const { onBackClick } = this.props;
     if (typeof onBackClick === 'function') onBackClick();
   };
+
   onSaveDraftClick = () => {
     const { onSubmit } = this.props;
+    const { newUploadFile } = this.state;
     let data = this.getFormValue();
-    let fileUpload = [];
+    let fileUpload = newUploadFile;
+    toast.success(<Icon name='success'> Success ! Save draft complete.</Icon>, {
+      position: toast.POSITION.TOP_RIGHT,
+      toastClassName: 'fffffff'
+    });
     if (typeof onSubmit === 'function') onSubmit(data, fileUpload, true);
   };
+
   onSaveContinueClick = () => {
     console.log(this.form);
-    const { onSubmit } = this.props;
+    const { newUploadFile } = this.state;
     let data = this.getFormValue();
-    this.validateField(data)
-    let fileUpload = [];
+    const { onSubmit } = this.props;
+    this.validateField(data);
+    let fileUpload = newUploadFile;
     if (typeof onSubmit === 'function' && this.validateField(data)) {
       onSubmit(data, fileUpload, false);
     } else {
-      toast.error('Invalid username or password');
+      toast.error('Invalid username or password', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
-
   };
+
   validateField = (e) => {
     const formValidate = <div className="invalid-feedback">Require</div>
     const {
@@ -79,14 +96,26 @@ export default class StepContractForm extends Component {
       company_address: { length: company_address_length },
       hotel_authorized_person: { name: { length: auth_name_length }, position: { length: auth_position_length } },
       hotel_witness: { name: { length: wit_name_length }, position: { length: wit_position_length } }
-    } = e
-    hotel_name_length === 0 ? this.setState({ hotel_name_require: formValidate }) : this.setState({ hotel_name_require: "" })
-    company_name_length === 0 ? this.setState({ company_name_require: formValidate }) : this.setState({ company_name_require: "" })
-    company_address_length === 0 ? this.setState({ company_address_require: formValidate }) : this.setState({ company_address_require: "" })
-    auth_name_length === 0 ? this.setState({ auth_name_require: formValidate }) : this.setState({ auth_name_require: "" })
-    auth_position_length === 0 ? this.setState({ auth_position_require: formValidate }) : this.setState({ auth_position_require: "" })
-    wit_name_length === 0 ? this.setState({ wit_name_require: formValidate }) : this.setState({ wit_name_require: "" })
-    wit_position_length === 0 ? this.setState({ wit_position_require: formValidate }) : this.setState({ wit_position_require: "" })
+    } = e;
+    hotel_name_length === 0
+      ? this.setState({ hotel_name_require: formValidate })
+      : this.setState({ hotel_name_require: '' });
+    company_name_length === 0
+      ? this.setState({ company_name_require: formValidate })
+      : this.setState({ company_name_require: '' });
+    company_address_length === 0
+      ? this.setState({ company_address_require: formValidate })
+      : this.setState({ company_address_require: '' });
+    auth_name_length === 0
+      ? this.setState({ auth_name_require: formValidate })
+      : this.setState({ auth_name_require: '' });
+    auth_position_length === 0
+      ? this.setState({ auth_position_require: formValidate })
+      : this.setState({ auth_position_require: '' });
+    wit_name_length === 0 ? this.setState({ wit_name_require: formValidate }) : this.setState({ wit_name_require: '' });
+    wit_position_length === 0
+      ? this.setState({ wit_position_require: formValidate })
+      : this.setState({ wit_position_require: '' });
     if (
       hotel_name_length &&
       company_name_length &&
@@ -96,11 +125,48 @@ export default class StepContractForm extends Component {
       wit_name_length &&
       wit_position_length
     ) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
+  };
+
+  onFileUpload = () => {
+    const { newUploadFile } = this.state;
+    const form = this.contractForm;
+    console.log(form.attachment.files)
+    let files = form.attachment.files;
+
+    if (files.length > 0) {
+      let newList = [ ...newUploadFile, ...files ];
+      this.setState({ newUploadFile: newList });
+    }
+
+    // clear input field
+    form.attachment.value = null;
   }
+
+  onDeleteOldUploadFile = index => {
+    // todo: show confirm dialog
+
+    const { oldUploadFile } = this.state;
+
+    // mark file as inactive and wait for save
+    oldUploadFile[index].is_active = false;
+    this.setState({ oldUploadFile });
+  };
+
+  onDeleteNewUploadFile = index => {
+    // todo: show confirm dialog
+
+    const { newUploadFile } = this.state;
+
+    // file still not upload to server
+    // just remove from list
+    newUploadFile.splice(index, 1);
+    let newList = newUploadFile
+    this.setState({ newUploadFile: newList });
+  };
 
   render() {
     const {
@@ -110,8 +176,10 @@ export default class StepContractForm extends Component {
       auth_name_require,
       auth_position_require,
       wit_name_require,
-      wit_position_require
-    } = this.state
+      wit_position_require,
+      oldUploadFile,
+      newUploadFile
+    } = this.state;
     return (
       <StepContractFormStyle>
         <div className="content bg-white">
@@ -134,8 +202,7 @@ export default class StepContractForm extends Component {
                   type="text"
                   className={
                     ClassNames(
-                      "form-control", 
-                      "form- control-xl", 
+                      "form-control",
                       {
                         'is-invalid': hotel_name_require
                       }
@@ -163,8 +230,7 @@ export default class StepContractForm extends Component {
                   type="text"
                    className={
                     ClassNames(
-                      "form-control", 
-                      "form-control-xl", 
+                      "form-control",
                       {
                         'is-invalid': company_name_require
                       }
@@ -222,7 +288,6 @@ export default class StepContractForm extends Component {
                   className={
                     ClassNames(
                       "form-control",
-                      "form-control-xl",
                       {
                         'is-invalid': auth_name_require
                       }
@@ -250,7 +315,6 @@ export default class StepContractForm extends Component {
                   className={
                     ClassNames(
                       "form-control",
-                      "form-control-xl",
                       {
                         'is-invalid': auth_position_require
                       }
@@ -278,7 +342,6 @@ export default class StepContractForm extends Component {
                   className={
                     ClassNames(
                       "form-control",
-                      "form-control-xl",
                       {
                         'is-invalid': wit_name_require
                       }
@@ -306,7 +369,6 @@ export default class StepContractForm extends Component {
                   className={
                     ClassNames(
                       "form-control",
-                      "form-control-xl",
                       {
                         'is-invalid': wit_position_require
                       }
@@ -324,7 +386,7 @@ export default class StepContractForm extends Component {
             <div className="form-group row mb-4" />
             <div className="form-group row">
               <label
-                htmlFor="nameofauthorized"
+                htmlFor="attachment"
                 className="col-lg-4 offset-lg-1 col-form-label"
               >
                 Upload File
@@ -336,40 +398,35 @@ export default class StepContractForm extends Component {
                 >
                   <div className="btn btn-tertiary btn-xs btn-file mb-3">
                     <span>Browse file</span>
-                    <input
-                      id="input-b5"
-                      name="input-b5[]"
-                      type="file"
-                      multiple
-                    />
+                    <input id="attachment" name="attachment" type="file" multiple onChange={this.onFileUpload}/>
                   </div>
                   <div className="file-upload-container">
-                    <div className="file-upload-statusbar rounded mb-3">
-                      <Icon name='attached' />
-                      <span>
-                        Authorized_person_id.jpg
-                      </span>
-                      <button
-                        type="button"
-                        className="close rounded-circle"
-                        aria-label="Close"
-                      >
-                        <Icon name='close' />
-                      </button>
-                    </div>
-                    <div className="file-upload-statusbar rounded mb-3">
-                      <Icon name='attached' />
-                      <span>
-                        Authorized_person_id_new.jpg
-                      </span>
-                      <button
-                        type="button"
-                        className="close rounded-circle"
-                        aria-label="Close"
-                      >
-                        <Icon name='close' />
-                      </button>
-                    </div>
+                    {oldUploadFile.map((file, index) => {
+                      if (!file.is_active) return null;
+                      return (
+                        <AttachmentList
+                          key={index}
+                          filename={file.filename}
+                          onDelete={() => {
+                            this.onDeleteOldUploadFile(index);
+                          }}
+                          isPreview={true}
+                        />
+                      );
+                    })}
+
+                    {newUploadFile.map((file, index) => {
+                      return (
+                        <AttachmentList
+                          key={index}
+                          filename={file.name}
+                          onDelete={() => {
+                            this.onDeleteNewUploadFile(index);
+                          }}
+                          isPreview={false}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -416,3 +473,19 @@ export default class StepContractForm extends Component {
     );
   }
 }
+
+const AttachmentList = ({ filename, onDelete, isPreview }) => (
+  <div className="file-upload-statusbar rounded mb-3">
+    <Icon name='attached' />
+    {isPreview ? (
+      <a href={contractService.GetAttachmentPath(filename)} target="_blank">
+        {getAttachmentFilename(filename)}
+      </a>
+    ) : (
+      <span>{filename}</span>
+    )}
+    <button type="button" className="close rounded-circle" aria-label="Close" onClick={onDelete}>
+      <Icon name="close" />
+    </button>
+  </div>
+);

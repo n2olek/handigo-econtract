@@ -34,7 +34,7 @@ func Save(c *gin.Context) {
 		// log.Println(file.Filename)
 		// TODO Do validation here file extension, file size
 		// Upload the file to specific dst.
-		c.SaveUploadedFile(file, config.ContractFileUploadLocationPath+file.Filename)
+		c.SaveUploadedFile(file, config.ContractAttachmentUploadPath+file.Filename)
 	}
 
 	result, con := insert(con)
@@ -65,12 +65,6 @@ func View(c *gin.Context) {
 	}
 }
 
-// @Summary get list of all contract
-// @Description test
-// @ID GetContractList
-// @Accept json
-// @Produce json
-// @Router /contract/getContractList [get]
 func GetContractList(c *gin.Context) {
 	pageRequest := PageRequest{}
 	if err := c.Bind(&pageRequest); err == nil {
@@ -110,7 +104,10 @@ func Edit(c *gin.Context) {
 		// log.Println(file.Filename)
 		// TODO Do validation here file extension, file size
 		// Upload the file to specific dst.
-		c.SaveUploadedFile(file, config.ContractFileUploadLocationPath+file.Filename)
+		filename := strconv.FormatInt(util.CurrentTimeMilliSec(), 10) + "_" + file.Filename
+		if err := c.SaveUploadedFile(file, config.ContractAttachmentUploadPath+filename); err == nil {
+			con.Attachment = append(con.Attachment, Attachment{Filename: filename, IsActive: true})
+		}
 	}
 
 	result, con := update(con)
@@ -122,24 +119,14 @@ func Edit(c *gin.Context) {
 	})
 }
 
-func TestUpload(c *gin.Context) {
-	form, _ := c.MultipartForm()
-	files := form.File["upload[]"]
-
-	for _, file := range files {
-		// log.Println(file.Filename)
-		// TODO Do validation here file extension, file size
-		// Upload the file to specific dst.
-		filename := strconv.FormatInt(util.CurrentTimeMilliSec(), 10) + "_" + file.Filename
-		if err := c.SaveUploadedFile(file, config.ContractFileUploadLocationPath+filename); err != nil {
-			filename = ""
-		}
-	}
-
-	c.JSON(200, gin.H{
-		"status":  200,
-		"message": "aaa",
-	})
+func GetAttachment(c *gin.Context) {
+	filename := c.Param("filename")
+	filepath := config.ContractAttachmentUploadPath + filename
+	c.Header("Content-Description", "File Transfer")
+	c.Header("Content-Transfer-Encoding", "binary")
+	c.Header("Content-Disposition", "inline; filename="+filename)
+	// c.Header("Content-Type", "application/octet-stream")
+	c.File(filepath)
 }
 
 func Del(c *gin.Context) {
@@ -148,3 +135,7 @@ func Del(c *gin.Context) {
 		"message": "update complete",
 	})
 }
+
+// func UpdateLanguage (c *gin.Context) {
+// 	var request UpdateLanguageRequest{}
+// }

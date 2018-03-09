@@ -56,9 +56,14 @@ const axiosService = (type, url, params, isFullUrl) => {
 
     case 'postFormData':
       let formData = new FormData();
-      Object.keys(params).map(key => {
-        return formData.set(key, params[key]);
-      });
+  		Object.keys(params).map(key => {
+        let value = params[key];
+        if (typeof value === "object" && value.length > 0) {
+          return value.map((subValue) => {
+      			return formData.append(key, subValue);
+      		});
+        } else return formData.append(key, params[key]);
+  		});
       return axios({
         method: 'post',
         url: isFullUrl ? url : BASE_API + BASE_PATH_API + url,

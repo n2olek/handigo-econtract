@@ -109,6 +109,27 @@ injectGlobal`
   }
 
 .btn {
+  &-primary {
+    background: ${COLORS.BLUE};
+    border-color: ${COLORS.BLUE};
+
+    &:hover, &:focus {
+      background: ${COLORS.BLUE1};
+      border-color: ${COLORS.BLUE1};
+    }
+  }
+
+  &-tertiary {
+    color: ${COLORS.WHITE};
+    background: ${COLORS.ORANGE1};
+
+    &:hover {
+      background-color: ${COLORS.ORANGE2};
+      border-color: ${COLORS.ORANGE2};
+      color: ${COLORS.WHITE};
+    }
+  }
+
   &.disabled,
   &:disabled {
     background-color: ${COLORS.GRAY8};
@@ -120,21 +141,7 @@ injectGlobal`
     font-size: 18px;
   }
 
-  &-primary {
-    background: ${COLORS.BLUE};
-    border-color: ${COLORS.BLUE};
 
-    &:hover {
-      opacity: .8;
-      background: ${COLORS.BLUE};
-      border-color: ${COLORS.BLUE};
-    }
-  }
-
-  &-tertiary {
-    color: ${COLORS.WHITE};
-    background: ${COLORS.ORANGE1};
-  }
 
   &-lang {
     min-width: 265px;
@@ -250,26 +257,6 @@ injectGlobal`
   }
 }
 
-.file-upload {
-  &-statusbar {
-    color: ${COLORS.GRAY9};
-    font-size: ${FONTSIZES.PRIMARYBODYXS};
-    font-family: ${FONTFAMILIES.SECONDARYOPENSANS};
-    padding: 11px 15px;
-    background-color: ${COLORS.GRAY2};
-
-    .close {
-      width: 20px;
-      height: 20px;
-      background-color: ${COLORS.GRAY7};
-      line-height: 0.5;
-      font-size: 14px;
-      text-shadow: none;
-      color: ${COLORS.WHITE};
-    }
-  }
-}
-
 .button-continue, .buttons-group, .buttons-frontend {
   .btn {
     margin-right: 15px;
@@ -313,8 +300,6 @@ injectGlobal`
     }
   }
 }
-
-
 
   /* Test no effect global to local style
   ============================================================ */

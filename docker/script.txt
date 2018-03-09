@@ -1,0 +1,54 @@
+docker container run \
+--name mongo \
+-d \
+-p 27018:27017 \
+mongo
+
+
+
+
+docker container run \
+--name test \
+-d \
+-p 8766:8765 \
+--link mongo:mongo \
+-v /home/project/handigo_econtract/backend/:/backend/ \
+-v /home/resource/handigo_econtract/:/storage/ \
+-w /backend/ \
+golang sh -c "go get ./...; go run main.go"
+
+// --link mongo:mongo \    --> link to mongo container for alias name instead of using fixed ip
+// -v /home/project/handigo_econtract/backend/:/backend/ \    --> mount source code location
+// -v /home/resource/handigo_econtract/:/storage/ \    --> mount storage location for file upload
+// golang sh -c "go get ./...; go run main.go"    --> run golang container with command to install required go package and run go
+
+// ****** note: do not terminate current running process, start new terminal for other work ******
+
+
+
+
+
+docker container run \
+--name econtract_frontend \
+-p 3210:3210 \
+-v /home/project/handigo_econtract/frontend/:/frontend/ \
+-w /frontend/ \
+node sh -c "npm i; npm start"
+
+// -v /home/project/handigo_econtract/frontend/:/frontend/ \    --> mount source code location
+// node sh -c "npm i; npm start"    --> run node container with command to install required node package and run node
+
+// ****** note: do not terminate current running process, start new terminal for other work ******
+
+
+
+
+
+docker container run \
+--name nginx \
+-d \
+-p 80:80 \
+-v /home/resource/nginx/nginx.conf:/etc/nginx/nginx.conf \
+nginx
+
+// -v /home/resource/nginx/nginx.conf:/etc/nginx/nginx.conf \    --> mount config file

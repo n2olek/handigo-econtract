@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { FormLoginStyle } from './styled'
 import ClassNames from 'classnames'
 import { Logos } from "themes"
+import { toast } from 'react-toastify';
 
 export default class FormLogin extends Component {
   state = {
@@ -23,17 +24,37 @@ export default class FormLogin extends Component {
       username,
       password
     };
+    if (typeof this.props.onClickSubmitForm === 'function' && this.validateField()) {
+      this.props.onClickSubmitForm(userAuth);
+    }
+  }
+  validateField = () => {
+    const {
+      statusUserRequire,
+      statusPasswordRequire
+    } = this.state
     if (statusUserRequire && statusPasswordRequire) {
       this.setState({
         userRequire: this.requireForm,
         passwordRequire: this.requireForm
       })
-    } else {
-      if (typeof this.props.onClickSubmitForm === 'function' && !statusUserRequire && !statusPasswordRequire) {
-        this.props.onClickSubmitForm(userAuth);
+      toast.error(
+        'Require username or password',
+        { position: toast.POSITION.TOP_RIGHT }
+      )
+    }
+    else {
+      if (!statusUserRequire && !statusPasswordRequire) {
+        return true
+      }
+      else {
+        toast.error(
+          'Require username or password',
+          { position: toast.POSITION.TOP_RIGHT }
+        )
       }
     }
-
+    return false
   }
   handleInputFormChange = (ev) => {
     const {
@@ -66,7 +87,7 @@ export default class FormLogin extends Component {
         onSubmit={this.onClickSubmitForm}
       >
         <div className="text-center mb-5">
-          <img src={Logos['logo-handigo.png']} className="mb-4" alt="Banner"/>
+          <img src={Logos['logo-handigo.png']} className="mb-4" alt="Banner" />
           <p>Welcome to HandiGo E-Contract, Please login.</p>
         </div>
         <div className="form-group mb-4">

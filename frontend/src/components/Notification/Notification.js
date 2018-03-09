@@ -3,12 +3,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import { ToastContainerStyled } from './styled'
 
 const Notification = () => {
+
   return (
     <ToastContainerStyled>
       <ToastContainer
         position={toast.POSITION.TOP_CENTER}
         type="default"
-        autoClose={5000000}
+        autoClose={300000}
         hideProgressBar={true}
         newestOnTop={false}
         closeOnClick={false}

@@ -79,6 +79,7 @@ type Contract struct {
 	UpdateDate   int64         `form:"update_date" json:"update_date" bson:"update_date"`
 	DeleteDate   int64         `form:"delete_date" json:"delete_date" bson:"delete_date"`
 	IsActive     bool          `form:"is_active" json:"is_active" bson:"is_active"`
+	Attachment   []string      `form:"attachment" json:"attachment" bson:"attachment"`
 
 	Doc                     Doc    `form:"doc" json:"doc" bson:"doc"`
 	HotelName               string `form:"hotel_name" json:"hotel_name" bson:"hotel_name"`

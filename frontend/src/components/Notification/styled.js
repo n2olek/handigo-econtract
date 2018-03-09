@@ -6,6 +6,7 @@ import {
   FONTSIZES,
   SCREENS
 } from 'themes/styles/bases/variables'
+import { Icons } from 'themes'
 
 // Modifier (props)
 // ============================================================
@@ -23,15 +24,32 @@ export const ToastContainerStyled = styled.div`
   }
 
   .toast-container {
-    background-color: ${COLORS.ORANGE4};
+    /* background-color: ${COLORS.ORANGE4}; */
     border-radius: ${BORDERRADIUSES.XS};
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
-    color: ${COLORS.ORANGE3};
+
     font-family: ${FONTFAMILIES.SECONDARYOPENSANS};
     box-shadow: none;
     min-height: 50px;
     padding-left: 70px;
+  }
+
+  [data-css-1wc6kks] {
+    background-color: ${COLORS.GREEN3};
+    color: ${COLORS.GREEN2}
+  }
+
+  i {
+    /* width: 22px; */
+    height: 22px;
+    position: absolute;
+    left: 30px;
+  }
+
+  [data-css-je5d12] {
+    background-color: ${COLORS.ORANGE4};
+    color: ${COLORS.ORANGE3};
   }
 
 	/* Child element styles

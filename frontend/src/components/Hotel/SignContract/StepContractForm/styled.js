@@ -16,7 +16,7 @@ export const StepContractFormStyle = styled.div`
 	/* Parent styles
     ------------------------------- */
   .content {
-    padding: 76px 170px 58px;
+    padding: 76px 100px 58px;
     border-radius: ${BORDERRADIUSES.XXL};
   }
 
@@ -104,6 +104,35 @@ export const StepContractFormStyle = styled.div`
       }
   }
 
+
+  .file-upload {
+    &-statusbar {
+      color: ${COLORS.GRAY9};
+      font-size: ${FONTSIZES.PRIMARYBODYXS};
+      font-family: ${FONTFAMILIES.SECONDARYOPENSANS};
+      padding: 11px 15px;
+      background-color: ${COLORS.GRAY2};
+
+      .close {
+        width: 20px;
+        height: 20px;
+        background-color: ${COLORS.GRAY7};
+        line-height: 0.5;
+        font-size: 14px;
+        text-shadow: none;
+        color: ${COLORS.WHITE};
+      }
+
+      a {
+        color: ${COLORS.GRAY9};
+
+        &:hover {
+          color: ${COLORS.BLUE};
+        }
+      }
+    }
+  }
+
   .buttons-frontend {
     .btn {
       margin-bottom: 15px;
@@ -135,7 +164,7 @@ export const StepContractFormStyle = styled.div`
     .invalid-feedback {
       position: absolute;
       top: 5px;
-      left: 495px;
+      left: 555px;
     }
   }
 
